@@ -1,4 +1,4 @@
-import {toml} from "../../deps.ts";
+import { toml } from "../../deps.ts";
 
 
 // Run from root of program
@@ -10,7 +10,7 @@ try {
     config = toml.parse(CONFIG);
 } catch (e) {
     console.error("Parsing error on line " + e.line + ", column " + e.column +
-    ": " + e.message);
+        ": " + e.message);
 }
 
 

@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  rest:
+    context:
+      build: "./rest"
+      dockerfile: dockerfile
+  
+  grpc:
+
+  soap:
+
+  postgres:
+
