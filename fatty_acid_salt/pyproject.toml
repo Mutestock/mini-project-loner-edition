@@ -8,6 +8,7 @@ authors = ["= <doublenegative@protonmail.com>"]
 python = "^3.9"
 nose2 = "^0.10.0"
 zeep = "^4.1.0"
+Cython = "^0.29.24"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
