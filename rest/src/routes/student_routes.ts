@@ -13,13 +13,7 @@ function studentRoutes(router: oak.Router): oak.Router {
             context.response.body = "Read placeholder";
         })
         .post(routePrefix, async (context: oak.RouterContext) => {
-            
-            if (!context.request.hasBody) {
-                context.throw(oak.Status.BadRequest, "Bad Request");
-            }
-            if (body.type !== "json") {
-
-            }
+            await create(context);
         })
         .put(routePrefix, (context) => {
             context.response.body = "Read list placeholder";
