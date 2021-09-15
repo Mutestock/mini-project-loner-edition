@@ -1,22 +1,22 @@
 
 // Database level
 class Student {
-    private _id: number;
+    private _uuid: number;
     private _username: string;
     private _email: string;
     private _password: string;
     private _age: number;
 
-    constructor(id: number, username: string, email: string, password: string, age: number) {
-        this._id = id;
+    constructor(uuid: number, username: string, email: string, password: string, age: number) {
+        this._uuid = uuid;
         this._username = username;
         this._email = email;
         this._password = password;
         this._age = age;
     }
 
-    get id(): number {
-        return this._id;
+    get uuid(): number {
+        return this._uuid;
     }
 
     get username(): string {
@@ -36,7 +36,7 @@ class Student {
     }
 }
 
-// For post requests with auto incrementing ids
+// For post requests with auto incrementing uuids
 class NewStudent {
     private username: string;
     private email: string;

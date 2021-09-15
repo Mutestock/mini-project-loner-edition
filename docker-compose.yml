@@ -2,13 +2,23 @@ version: "3"
 
 services:
   rest:
-    context:
-      build: "./rest"
+    build:
+      context: "./rest"
       dockerfile: dockerfile
-  
-  grpc:
+    container_name: deno-deploy
+    ports:
+      - "15000:15000"
+    networks:
+      - app-network
 
-  soap:
+  #grpc:
+#
+  #soap:
 
-  postgres:
+  #postgres:
 
+
+
+networks:
+  app-network:
+    driver: "bridge"
