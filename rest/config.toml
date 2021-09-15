@@ -1,11 +1,32 @@
-[server]
+# I recognize the bad practices here. You'd use secrets IRL. 
+# It is outside the scope of this assignment and I will promptly ignore it.
+
+
+[production]
+[production.server]
 port=15000
 hostname="0.0.0.0"
 
+# REMEMBER TO USE OTHER VARIABLES FOR PRODUCTION
+# NEED ENVIRONMENT VARIABLE CHECK
 
-[database]
-pg_port=13291
+[production.database]
+pg_port=15100
 pg_user="test_user"
 pg_pass="test_pass"
 pg_db ="test_db"
+pg_host="primary_db"
+max_pool_connections=20
+
+[development]
+[development.server]
+port=9921
+hostname="localhost"
+
+[development.database]
+pg_port=15100
+pg_user="test_user"
+pg_pass="test_pass"
+pg_db ="localhost"
 pg_host="localhost"
+max_pool_connections=20
