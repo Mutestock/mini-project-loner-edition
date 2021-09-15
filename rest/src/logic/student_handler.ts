@@ -1,9 +1,13 @@
 
 import { Student, NewStudent, StudentResponse } from "../entities/student.ts";
 import { insertObject } from "./handler_utils.ts";
+import {oak} from "../../deps.ts";
 
 
-async function create(newStudent: NewStudent) {
+async function create(context: oak.RouterContext) {
+    let body = context.request.body();
+    let newStudent = await body.value;
+    newStudent = newStudent as NewStudent;
     await insertObject(newStudent, "students");
 }
 
