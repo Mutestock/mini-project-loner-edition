@@ -1,3 +1,5 @@
+# Primarily only includes technologies vital to development
+
 version: '3'
 
   primary_db:

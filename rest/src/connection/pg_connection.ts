@@ -25,7 +25,6 @@ async function runQuery(query: string) {
     return result;
 }
 
-
 export {
     runQuery
 }

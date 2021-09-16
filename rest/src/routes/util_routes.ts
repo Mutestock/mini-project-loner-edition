@@ -5,7 +5,7 @@ import {oak} from "../../deps.ts";
 // Root route acts as a health check
 
 
-function basic_routes(router: oak.Router): oak.Router{
+function basicRoutes(router: oak.Router): oak.Router{
     router
         .get("/", (context) => {
             context.response.body = "Ok"
@@ -13,6 +13,8 @@ function basic_routes(router: oak.Router): oak.Router{
     return router;
 }
 
+
+
 export {
-    basic_routes,
+    basicRoutes,
 }

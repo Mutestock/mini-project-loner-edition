@@ -1,0 +1,14 @@
+
+
+### Rest ###
+Production variable disfunctional in config
+
+
+### gRPC ###
+Needs basic tonic integration with warp
+
+### SOAP ###
+
+
+### Server ###
+Needs basic digitalocean droplet setup

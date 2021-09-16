@@ -30,3 +30,6 @@ pg_pass="test_pass"
 pg_db ="localhost"
 pg_host="localhost"
 max_pool_connections=20
+
+[test.server]
+[test.database]
