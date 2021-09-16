@@ -18,19 +18,12 @@ async function runQuery(query: string) {
     const client = await pool.connect();
     let result: any;
     try {
-      result = await client.queryObject(query);
+        result = await client.queryObject(query);
     } finally {
-      client.release();
+        client.release();
     }
     return result;
-  }
-
-
-
-// const client = await dbPool.connect(); // 19 connections are still available
-// await client.queryArray`UPDATE X SET Y = 'Z'`;
-// await client.release(); // This connection is now available for use again
-
+}
 
 
 export {

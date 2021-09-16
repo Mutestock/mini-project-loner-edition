@@ -1,44 +1,15 @@
-import { Student, NewStudent, StudentResponse } from "../entities/student.ts";
+import { oak } from "../../deps.ts"
 import { runQuery } from "../connection/pg_connection.ts"
-import {oak} from "../../deps.ts"
+import { config } from "../utils/config.ts";
 
-async function insertObject(newObject: Object, tableName: string) {
 
-    const objectKeys = Object.keys(newObject);
-    const objectEntries = Object.entries(newObject);
-
-    let query = `INSERT INTO ${tableName}(`
-    for (const key of objectKeys) {
-        if (objectKeys.indexOf(key) !== objectKeys.length - 1) {
-            query += `${key},`
-        }
-        else {
-            query += `${key}`
-        }
-    }
-    query += ") VALUES("
-    for (const [key, value] of objectEntries) {
-        if (objectKeys.indexOf(key) !== objectKeys.length - 1) {
-            query += `${value},`
-        }
-        else {
-            query += `${value}`
-        }
-    }
+// Doesn't need bodyGuard. No input values
+async function queryHealthCheck() {
+    const query = `SELECT * FROM $(config.database.test_db);`
     await runQuery(query);
 }
 
-function bodyGuard(context: oak.RouterContext){
-    if (!context.request.hasBody){
-        context.throw(oak.Status.BadRequest, "Bad Request");
-    }
-    if (context.request.body().type !== "json"){
-        context.throw(oak.Status.BadRequest, "Bad Request");
-    }
+export {
+    queryHealthCheck,
 }
 
-
-
-export{
-    insertObject, bodyGuard
-}

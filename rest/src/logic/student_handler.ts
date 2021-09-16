@@ -1,13 +1,13 @@
 
 import { Student, NewStudent, StudentResponse } from "../entities/student.ts";
-import { insertObject, bodyGuard} from "./handler_utils.ts";
-import {oak} from "../../deps.ts";
+import { queryInsertObject, queryBodyGuard } from "./shared_behaviour.ts";
+import { oak } from "../../deps.ts";
 
 
 async function create(context: oak.RouterContext) {
-    bodyGuard(context);
+    queryBodyGuard(context);
     const newStudent = await context.request.body().value as NewStudent;
-    await insertObject(newStudent, "students");
+    await queryInsertObject(newStudent, "students");
 }
 
 
@@ -16,7 +16,7 @@ async function read() {
 }
 
 async function update(context: oak.RouterContext) {
-    bodyGuard(context);
+    await queryBodyGuard(context);
 }
 
 async function _delete() {
