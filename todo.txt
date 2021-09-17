@@ -2,6 +2,7 @@
 
 ### Rest ###
 Production variable disfunctional in config
+Error handling
 
 
 ### gRPC ###

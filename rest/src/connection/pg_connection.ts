@@ -28,4 +28,3 @@ async function runQuery(query: string) {
 export {
     runQuery
 }
-

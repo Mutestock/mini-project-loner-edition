@@ -4,25 +4,32 @@ import { queryInsertObject, queryBodyGuard } from "./shared_behaviour.ts";
 import { oak } from "../../deps.ts";
 
 
+// Expected input = newStudent
 async function create(context: oak.RouterContext) {
     queryBodyGuard(context);
-    const newStudent = await context.request.body().value as NewStudent;
+    const newStudent = await context
+        .request
+        .body()
+        .value as NewStudent;
     await queryInsertObject(newStudent, "students");
 }
 
-
-async function read() {
-
+// Expected input = id
+async function read(context: oak.RouterContext) {
+    await queryBodyGuard(context);
 }
 
+// Expected input = id, newStudent
 async function update(context: oak.RouterContext) {
     await queryBodyGuard(context);
 }
 
+// Expected input = id
 async function _delete() {
 
 }
 
+// Expected input = None
 async function readList() {
 
 }

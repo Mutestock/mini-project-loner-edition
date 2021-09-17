@@ -64,8 +64,6 @@ class StudentResponse {
     }
 }
 
-
-
 export {
     Student,
     NewStudent,

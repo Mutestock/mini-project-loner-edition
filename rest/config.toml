@@ -1,7 +1,6 @@
 # I recognize the bad practices here. You'd use secrets IRL. 
 # It is outside the scope of this assignment and I will promptly ignore it.
 
-
 [production]
 [production.server]
 port=15000
@@ -33,3 +32,7 @@ max_pool_connections=20
 
 [test.server]
 [test.database]
+
+# Assuming execution from root of project
+[utils]
+gherkin_file_paths="./tests/gherkin"

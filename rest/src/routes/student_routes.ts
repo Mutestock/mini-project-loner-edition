@@ -15,10 +15,10 @@ function studentRoutes(router: oak.Router): oak.Router {
         .post(routePrefix, async (context: oak.RouterContext) => {
             await create(context);
         })
-        .put(routePrefix, (context) => {
+        .put<{id: string}>(routePrefix, (context) => {
             context.response.body = "Read list placeholder";
         })
-        .delete(routePrefix, (context) => {
+        .delete<{id: string}>(routePrefix, (context) => {
             context.response.body = "Read list placeholder";
         })
     return router;
