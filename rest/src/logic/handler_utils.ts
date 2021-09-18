@@ -5,7 +5,8 @@ import { config } from "../utils/config.ts";
 
 // Doesn't need bodyGuard. No input values
 async function queryHealthCheck() {
-    const query = `SELECT * FROM $(config.database.test_db);`
+    
+    const query = `SELECT * FROM ${config.database.test_db};`
     await runQuery(query);
 }
 

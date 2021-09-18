@@ -26,13 +26,24 @@ hostname="localhost"
 pg_port=15100
 pg_user="test_user"
 pg_pass="test_pass"
-pg_db ="localhost"
+pg_db ="test_db"
 pg_host="localhost"
 max_pool_connections=20
 
+[test]
 [test.server]
+port=12000
+hostname="localhost"
+
 [test.database]
+pg_port=16666
+pg_user="test_user"
+pg_pass="test_pass"
+pg_db ="test_db"
+pg_host="localhost"
+max_pool_connections=20
 
 # Assuming execution from root of project
-[utils]
+[misc]
 gherkin_file_paths="./tests/gherkin"
+migrations_directory="./migrations"

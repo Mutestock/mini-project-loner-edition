@@ -1,20 +1,21 @@
 version: "3"
-  services:
-    primary_db:
-      image: postgres:alpine
-      restart: always
-      container_name: primary_db
-      environment:
-        - POSTGRES_USER=test_user
-        - POSTGRES_PASSWORD=test_pass
-        - POSTGRES_DB=test_db
-        - PGDATA=/var/lib/postgresql/data
-      ports:
-        - 15100:5432
-      volumes:
-        - ./data/postgres:/var/lib/postgresql/data    
-      networks: 
-        - app-network      
+
+services:
+  primary_db:
+    image: postgres:alpine
+    restart: always
+    container_name: primary_db_dev
+    environment:
+      - POSTGRES_USER=test_user
+      - POSTGRES_PASSWORD=test_pass
+      - POSTGRES_DB=test_db
+      - PGDATA=/var/lib/postgresql/data
+    ports:
+      - 15100:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data    
+    networks: 
+      - app-network      
 
 networks:
   app-network:

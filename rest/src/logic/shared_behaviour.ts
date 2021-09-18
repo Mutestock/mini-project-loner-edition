@@ -1,6 +1,6 @@
 
 import { runQuery } from "../connection/pg_connection.ts"
-import {oak} from "../../deps.ts"
+import { oak } from "../../deps.ts"
 
 async function queryInsertObject(newObject: Object, tableName: string) {
 
@@ -28,16 +28,16 @@ async function queryInsertObject(newObject: Object, tableName: string) {
     await runQuery(query);
 }
 
-function queryBodyGuard(context: oak.RouterContext){
-    if (!context.request.hasBody){
+function queryBodyGuard(context: oak.RouterContext) {
+    if (!context.request.hasBody) {
         context.throw(oak.Status.BadRequest, "Bad Request");
     }
-    if (context.request.body().type !== "json"){
+    if (context.request.body().type !== "json") {
         context.throw(oak.Status.BadRequest, "Bad Request");
     }
 }
 
 
-export{
+export {
     queryInsertObject, queryBodyGuard
 }
