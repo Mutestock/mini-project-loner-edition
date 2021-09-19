@@ -1,4 +1,4 @@
-![Deploy](https://github.com/Mutestock/mini-project-loner-edition/.github/workflows/deploy/badge.svg)
+![Deploy](https://github.com/Mutestock/mini-project-loner-edition/actions/workflows/deploy.yml/badge.svg)
 
 <p> This project requires REST, SOAP and gRPC. </p>
 <p> Since all of these technologies should be relatively universal, I'll be making this assignment in three different languages as an exercise </p>
