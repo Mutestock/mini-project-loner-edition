@@ -18,9 +18,9 @@ services:
     restart: always
     container_name: primary_db_prod
     environment:
-      - POSTGRES_USER=test_user
-      - POSTGRES_PASSWORD=test_pass
-      - POSTGRES_DB=test_db
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASS}
+      - POSTGRES_DB=${PG_DB}
       - PGDATA=/var/lib/postgresql/data
     ports:
       - 15100:5432
