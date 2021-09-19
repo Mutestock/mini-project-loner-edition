@@ -1,0 +1,19 @@
+syntax = "proto3";
+package student;
+
+service StudentConstructor {
+    rpc CreateStudent (Student) returns (CreationResponse){}
+}
+
+message Student {
+    string firstname = 1;
+    string lastname = 2;
+    int32 id = 3;
+    string phone_number = 4;
+    string email = 5;
+}
+
+message CreationResponse {
+    string message = 1;
+}
+

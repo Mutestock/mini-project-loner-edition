@@ -1,9 +1,25 @@
+
 [package]
 name = "mini_project_1"
 version = "0.1.0"
 authors = ["= <doublenegative@protonmail.com>"]
 edition = "2018"
 
+[[bin]]
+name = "mini-proj-server"
+path = "src/server.rs"
+
+[[bin]]
+name = "mini-proj-client"
+path = "src/client.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+tonic ="0.5.2"
+toml="0.5.8"
+tokio= { version="1.11.0", features = ["macros", "rt-multi-thread"] }
+prost="0.8.0"
+
+[build-dependencies]
+tonic-build = "0.5.2"
