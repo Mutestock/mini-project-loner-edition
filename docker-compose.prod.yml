@@ -16,7 +16,7 @@ services:
   primary_db:
     image: postgres:alpine
     restart: always
-    container_name: primary_db
+    container_name: primary_db_prod
     environment:
       - POSTGRES_USER=test_user
       - POSTGRES_PASSWORD=test_pass

@@ -1,14 +1,16 @@
-import { toml, dotenv } from "../../deps.ts";
+import { toml } from "../../deps.ts";
 
 
-const env = dotenv.config();
+//const env = dotenv.config();
 // Run from root of program
 const CONFIG_PATH = "./config.toml";
 const CONFIG = await Deno.readTextFile(CONFIG_PATH);
+const PRODUCTION = Deno.env.get("PRODUCTION");
+
 let config: any;
 
 try {
-    if(env.production == "1"){
+    if(PRODUCTION=="1"){
         config = toml.parse(CONFIG).production;
     }
     else{
