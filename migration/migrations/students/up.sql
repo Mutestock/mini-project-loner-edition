@@ -5,3 +5,4 @@ CREATE TABLE IF NOT EXISTS students(
     phone_number VARCHAR(500) NOT NULL,
     email VARCHAR(255) NOT NULL
 );
+
