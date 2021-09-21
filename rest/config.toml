@@ -1,49 +1,12 @@
-# I recognize the bad practices here. You'd use secrets IRL. 
-# It is outside the scope of this assignment and I will promptly ignore it.
-
-[production]
-[production.server]
+[development]
+[development.server]
 port=15000
 hostname="0.0.0.0"
 
-# REMEMBER TO USE OTHER VARIABLES FOR PRODUCTION
-# NEED ENVIRONMENT VARIABLE CHECK
-
-[production.database]
-pg_port=15100
-pg_user="test_user"
-pg_pass="test_pass"
-pg_db ="test_db"
-pg_host="primary_db"
-max_pool_connections=20
-
-[development]
-[development.server]
-port=12000
-hostname="localhost"
-
 [development.database]
-pg_port=15100
+pg_port=5432
 pg_user="test_user"
 pg_pass="test_pass"
 pg_db ="test_db"
-pg_host="localhost"
+pg_host="primary_db_dev"
 max_pool_connections=20
-
-[test]
-[test.server]
-port=12000
-hostname="localhost"
-
-[test.database]
-pg_port=16666
-pg_user="test_user"
-pg_pass="test_pass"
-pg_db ="test_db"
-pg_host="localhost"
-max_pool_connections=20
-
-# Assuming execution from root of project
-[misc]
-gherkin_file_paths="./tests/gherkin"
-migrations_directory="./migrations"
