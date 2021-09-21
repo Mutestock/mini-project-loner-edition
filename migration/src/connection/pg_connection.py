@@ -2,13 +2,13 @@ import psycopg2
 import os
 
 # utils.environment swaps environment variables on import
-import utils.environment
+from utils.config import CONFIG
 
-POSTGRES_USER = os.getenv("POSTGRES_USER")
-POSTGRES_PASS = os.getenv("POSTGRES_PASSWORD")
-POSTGRES_DATABASE = os.getenv("POSTGRES_DB")
-POSTGRES_HOST = os.getenv("POSTGRES_HOST")
-POSTGRES_PORT = os.getenv("POSTGRES_PORT")
+POSTGRES_USER = CONFIG["development"]["database"]["pg_user"]
+POSTGRES_PASS = CONFIG["development"]["database"]["pg_pass"]
+POSTGRES_DATABASE = CONFIG["development"]["database"]["pg_db"]
+POSTGRES_HOST = CONFIG["development"]["database"]["pg_host"]
+POSTGRES_PORT = CONFIG["development"]["database"]["pg_port"]
 
 def make_pg_pool():
     return psycopg2.connect(
