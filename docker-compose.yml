@@ -32,9 +32,19 @@ services:
     build:
       context: "./grpc"
       dockerfile: dockerfile
-    container_name: grpc_prod
+    container_name: grpc_dev
     ports:
       - 25100:25100
+    networks:
+      - app-network
+
+  migrator:
+    build:
+      context: "./migration"
+      dockerfile: dockerfile
+    container_name: migration_dev
+    environment:
+      - CONTAINERIZED=True
     networks:
       - app-network
 

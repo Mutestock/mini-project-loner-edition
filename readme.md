@@ -7,4 +7,4 @@
 <p> SOAP: Python </p>
 <p> gRPC: Rust (tonic) </p>
 <br>
-<p>Docker-compose -f docker-compose.prod.yml<p>
+<p>Docker-compose up --build<p>
