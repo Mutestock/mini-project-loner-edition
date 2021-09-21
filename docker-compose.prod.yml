@@ -13,6 +13,7 @@ services:
     environment:
       - PRODUCTION=1
 
+
   primary_db:
     image: postgres:alpine
     restart: always
@@ -29,15 +30,24 @@ services:
     networks: 
       - app-network      
 
+  grpc:
+    restart: always
+    build:
+      context: "./grpc"
+      dockerfile: dockerfile
+    container_name: grpc_prod
+    environment:
+      - PRODUCTION=1
+    ports:
+      - 25100:25100
+    networks:
+      - app-network
 
+    
 
-
-
-  #grpc:
+    
 #
   #soap:
-
-  #postgres:
 
 
 

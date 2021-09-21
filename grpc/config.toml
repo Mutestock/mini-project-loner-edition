@@ -12,7 +12,6 @@ pg_db ="test_db"
 pg_host="localhost"
 
 [development]
-
 [development.server]
 port=25100
 host="0.0.0.0"
