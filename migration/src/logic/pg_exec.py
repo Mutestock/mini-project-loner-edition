@@ -5,18 +5,18 @@ from utils.config import MIGRATIONS_FOLDER_PATH
 STUDENTS_MIGRATIONS = MIGRATIONS_FOLDER_PATH+"/students"
 
 
-def get_file(folder: str, sql_script_type: str) -> str:
+def get_sql(folder: str, sql_script_type: str) -> str:
     filename = f"{folder}/{sql_script_type}.sql"
     content = ""
     with open(filename) as f:
-        content = f.readlines()
+        content = f.read()
     return content
 
 def get_up_sql(folder: str) -> str:
-    get_file(folder, "up")
+    return get_sql(folder, "up")
 
 def get_down_sql(folder: str) -> str:
-    get_file(folder, "down")
+    return get_sql(folder, "down")
     
 
 

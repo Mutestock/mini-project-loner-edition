@@ -3,6 +3,7 @@
 ### Rest ###
 Production variable disfunctional in config
 Error handling
+Check format of 'Student' over all representations.
 
 
 ### gRPC ###
@@ -11,5 +12,6 @@ Needs basic tonic integration with warp
 ### SOAP ###
 
 
-### Server ###
+### Server ### (Discontinued)
 Needs basic digitalocean droplet setup
+
