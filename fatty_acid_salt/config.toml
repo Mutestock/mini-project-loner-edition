@@ -1,9 +1,0 @@
-[server]
-port=15000
-
-[database]
-pg_port=13291
-pg_user="test_user"
-pg_pass="test_pass"
-pg_db ="test_db"
-pg_host="localhost"
