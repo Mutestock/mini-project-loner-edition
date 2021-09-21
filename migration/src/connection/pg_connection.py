@@ -10,7 +10,7 @@ POSTGRES_DATABASE = CONFIG["development"]["database"]["pg_db"]
 POSTGRES_HOST = CONFIG["development"]["database"]["pg_host"]
 POSTGRES_PORT = CONFIG["development"]["database"]["pg_port"]
 
-def make_pg_pool():
+def make_pg_pool() -> psycopg2.connection:
     return psycopg2.connect(
         database=POSTGRES_DATABASE,
         user=POSTGRES_USER,

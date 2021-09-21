@@ -1,16 +1,21 @@
-
-from .aliases import ROOT_DIR
+import os
 import toml
+
+_ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+_ROOT_DIR = os.path.dirname(_ROOT_DIR)
+ROOT_DIR = os.path.dirname(_ROOT_DIR)
 
 CONFIG_FILE_PATH = ROOT_DIR + "/config.toml"
 
-filename = "file.py"
-content = ""
+filename = CONFIG_FILE_PATH
+content: str = ""
 
 with open(filename) as f:
-    content = f.readlines()
+    content = f.read()
+    
     
 CONFIG = toml.loads(content)
+MIGRATIONS_FOLDER_PATH = ROOT_DIR + CONFIG["misc"]["migrations_folder"]
 
-# Switches depending on whether or not the project is containerized.
-# This is for manual execution versus containerized execution.
+
+

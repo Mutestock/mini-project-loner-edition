@@ -9,3 +9,7 @@ pg_db ="test_db"
 pg_host="localhost"
 max_pool_connections=20
 
+
+# From root of project. See utils/aliases.py
+[misc]
+migrations_folder="/migrations"
