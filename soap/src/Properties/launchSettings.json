@@ -1,20 +1,9 @@
 ﻿{
   "iisSettings": {
     "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:32510",
-      "sslPort": 44335
-    }
+    "anonymousAuthentication": true
   },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
     "soap": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
