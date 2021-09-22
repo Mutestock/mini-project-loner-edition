@@ -1,11 +1,11 @@
 syntax = "proto3";
 package student;
 
-service StudentConstructor {
-    rpc CreateStudent (Student) returns (CreationResponse){}
+service Student {
+    rpc CreateStudent (StudentRequest) returns (CreationResponse){}
 }
 
-message Student {
+message StudentRequest {
     string firstname = 1;
     string lastname = 2;
     int32 id = 3;

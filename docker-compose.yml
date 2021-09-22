@@ -33,8 +33,10 @@ services:
       context: "./grpc"
       dockerfile: dockerfile
     container_name: grpc_dev
+    environment:
+      - CONTAINERIZED=1
     ports:
-      - 13000:25100
+      - 13000:13000
     networks:
       - app-network
 

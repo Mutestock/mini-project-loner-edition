@@ -3,8 +3,8 @@
 #[macro_use]
 extern crate lazy_static;
 
-use student::student_constructor_client::StudentConstructorClient;
-use student::Student;
+use student::student_client::StudentClient;
+use student::StudentRequest;
 
 mod utils;
 
@@ -18,14 +18,14 @@ pub mod student {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut client = match is_production_mode() {
         true => {
-            StudentConstructorClient::connect(format!(
+            StudentClient::connect(format!(
                 "http://[::1]:{}",
                 CONFIG.production.server.port
             ))
             .await?
         }
         false => {
-            StudentConstructorClient::connect(format!(
+            StudentClient::connect(format!(
                 "http://[::1]:{}",
                 CONFIG.development.server.port
             ))
@@ -33,7 +33,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
-    let request = tonic::Request::new(Student {
+    let request = tonic::Request::new(StudentRequest {
         firstname: "John".to_owned(),
         lastname: "Doe".to_owned(),
         id: 0,

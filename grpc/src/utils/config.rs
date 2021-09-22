@@ -13,6 +13,7 @@ lazy_static! {
 pub struct Config {
     pub production: Production,
     pub development: Development,
+    pub containerized: Containerized,
 }
 
 #[derive(Deserialize)]
@@ -23,6 +24,12 @@ pub struct Production {
 
 #[derive(Deserialize)]
 pub struct Development {
+    pub server: Server,
+    pub database: Database,
+}
+
+#[derive(Deserialize)]
+pub struct Containerized {
     pub server: Server,
     pub database: Database,
 }
@@ -42,8 +49,19 @@ pub struct Database {
     pub pg_host: String,
 }
 
+#[allow(dead_code)]
 pub fn is_production_mode() -> bool {
     match env::var_os("PRODUCTION") {
+        Some(_) => true,
+        None => false,
+    }
+}
+
+// Pretty much alternate development for containerization.
+// Rust takes time to compile and run through a container
+// Making an environment variable like this makes the process more bareable.
+pub fn is_containerized_development_mode() -> bool {
+    match env::var_os("CONTAINERIZED") {
         Some(_) => true,
         None => false,
     }
