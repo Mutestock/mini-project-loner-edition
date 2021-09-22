@@ -4,7 +4,7 @@
 extern crate lazy_static;
 
 use student::student_client::StudentClient;
-use student::{NewStudentObject,Id};
+use student::{CreateStudentRequest, ReadStudentListRequest};
 
 mod utils;
 
@@ -33,18 +33,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
-    //let request = tonic::Request::new(NewStudentObject {
-    //    firstname: "John".to_owned(),
-    //    lastname: "Doe".to_owned(),
-    //    phone_number: "+45 12 12 12 12".to_owned(),
-    //    email: "herp@derp.com".to_owned(),
-    //});
-
-    let request = tonic::Request::new(Id {
-        id:19
+    let request = tonic::Request::new(ReadStudentListRequest {
     });
 
-    let response = client.read_student(request).await?;
+    let response = client.read_student_list(request).await?;
 
     println!("RESPONSE={:?}", response);
 

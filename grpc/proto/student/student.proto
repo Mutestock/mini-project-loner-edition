@@ -2,36 +2,42 @@ syntax = "proto3";
 package student;
 
 service Student {
-    rpc CreateStudent (NewStudentObject) returns (CreationResponse){}
-    rpc ReadStudent (Id) returns (StudentReply){}
+  rpc CreateStudent(CreateStudentRequest) returns (CreateStudentResponse) {}
+  rpc ReadStudent(ReadStudentRequest) returns (ReadStudentResponse) {}
+  rpc UpdateStudent(UpdateStudentRequest) returns (UpdateStudentResponse) {}
+  rpc DeleteStudent(DeleteStudentRequest) returns (DeleteStudentResponse) {}
+  rpc ReadStudentList(ReadStudentListRequest) returns (ReadStudentListResponse) {}
 }
 
-message NewStudentObject {
-    string firstname = 1;
-    string lastname = 2;
-    string phone_number = 3;
-    string email = 4;
+message CreateStudentRequest {
+  string firstname = 1;
+  string lastname = 2;
+  string phone_number = 3;
+  string email = 4;
 }
 
-message StudentObject{
-    int32 id = 1;
-    string firstname = 2;
-    string lastname = 3;
-    string phone_number = 4;
-    string email = 5;
+message ReadStudentResponse {
+  string firstname = 1;
+  string lastname = 2;
+  string phone_number = 3;
+  string email = 4;
 }
 
-message StudentReply{
-    string firstname = 1;
-    string lastname = 2;
-    string phone_number = 3;
-    string email = 4;
+message UpdateStudentRequest {
+  int32 id = 1;
+  CreateStudentRequest new_student = 2;
 }
 
-message CreationResponse {
-    string message = 1;
-}
+message DeleteStudentRequest{ int32 id = 1;}
 
-message Id{
-    int32 id = 1;
-}
+message ReadStudentRequest {int32 id = 1;}
+
+message ReadStudentListRequest{}
+
+message CreateStudentResponse { string message = 1; }
+
+message ReadStudentListResponse { repeated ReadStudentResponse student_list = 1; }
+
+message UpdateStudentResponse { string message = 1; }
+
+message DeleteStudentResponse { string message = 1; }

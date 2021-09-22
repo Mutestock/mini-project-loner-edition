@@ -1,5 +1,7 @@
 use student::student_server::{Student, StudentServer};
-use student::{CreationResponse, NewStudentObject, StudentReply};
+use student::{
+    CreateStudentRequest, CreateStudentResponse, ReadStudentResponse,
+};
 use tonic::{transport::Server, Request, Response, Status};
 
 #[macro_use]
@@ -22,11 +24,11 @@ pub struct StudentCon {}
 impl Student for StudentCon {
     async fn create_student(
         &self,
-        request: Request<NewStudentObject>,
-    ) -> Result<Response<CreationResponse>, Status> {
+        request: Request<CreateStudentRequest>,
+    ) -> Result<Response<CreateStudentResponse>, Status> {
         println!("Got a request from {:?}", request.remote_addr());
 
-        let reply = student::CreationResponse {
+        let reply = student::CreateStudentResponse {
             message: format!("Hello {}!", request.into_inner().firstname),
         };
         Ok(Response::new(reply))
@@ -34,19 +36,55 @@ impl Student for StudentCon {
 
     async fn read_student(
         &self,
-        request: tonic::Request<student::Id>,
-    ) -> Result<tonic::Response<student::StudentReply>, tonic::Status> {
+        request: tonic::Request<student::ReadStudentRequest>,
+    ) -> Result<tonic::Response<student::ReadStudentResponse>, tonic::Status> {
         println!("Got a request from {:?}", request.remote_addr());
 
-        //let reply = student::StudentReply {
-        //    message: format!("Hello {}!", request.into_inner().firstname),
-        //};
-
-        let reply = StudentReply {
+        let reply = ReadStudentResponse {
             firstname: "stuff".to_owned(),
             lastname: "thing".to_owned(),
             phone_number: "phone".to_owned(),
             email: "email".to_owned(),
+        };
+        Ok(Response::new(reply))
+    }
+
+    async fn update_student(
+        &self,
+        request: tonic::Request<student::UpdateStudentRequest>,
+    ) -> Result<tonic::Response<student::UpdateStudentResponse>, tonic::Status> {
+        println!("Got a request from {:?}", request.remote_addr());
+        let reply = student::UpdateStudentResponse {
+            message: "Update student placeholder".to_owned(),
+        };
+        Ok(Response::new(reply))
+    }
+
+    async fn delete_student(
+        &self,
+        request: tonic::Request<student::DeleteStudentRequest>,
+    ) -> Result<tonic::Response<student::DeleteStudentResponse>, tonic::Status> {
+        println!("Got a request from {:?}", request.remote_addr());
+        let reply = student::DeleteStudentResponse {
+            message: "Update student placeholder".to_owned(),
+        };
+        Ok(Response::new(reply))
+    }
+
+    async fn read_student_list(
+        &self,
+        request: tonic::Request<student::ReadStudentListRequest>,
+    ) -> Result<tonic::Response<student::ReadStudentListResponse>, tonic::Status> {
+        println!("Got a request from {:?}", request.remote_addr());
+        let student_response = ReadStudentResponse {
+            firstname: "stuff".to_owned(),
+            lastname: "thing".to_owned(),
+            phone_number: "phone".to_owned(),
+            email: "email".to_owned(),
+        };
+
+        let reply = student::ReadStudentListResponse {
+            student_list: vec![student_response],
         };
         Ok(Response::new(reply))
     }
