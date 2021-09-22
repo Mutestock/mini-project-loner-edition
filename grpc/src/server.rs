@@ -43,13 +43,11 @@ impl Student for StudentCon {
     ) -> Result<tonic::Response<student::ReadStudentResponse>, tonic::Status> {
         println!("Got a request from {:?}", request.remote_addr());
 
-        let reply = ReadStudentResponse {
-            first_name: "stuff".to_owned(),
-            last_name: "thing".to_owned(),
-            phone_number: "phone".to_owned(),
-            email: "email".to_owned(),
-        };
-        Ok(Response::new(reply))
+        Ok(Response::new(
+            student_handler::read(request.into_inner())
+                .await
+                .expect("Student Creation failed"),
+        ))
     }
 
     async fn update_student(
@@ -57,10 +55,13 @@ impl Student for StudentCon {
         request: tonic::Request<student::UpdateStudentRequest>,
     ) -> Result<tonic::Response<student::UpdateStudentResponse>, tonic::Status> {
         println!("Got a request from {:?}", request.remote_addr());
-        let reply = student::UpdateStudentResponse {
-            message: "Update student placeholder".to_owned(),
-        };
-        Ok(Response::new(reply))
+        
+
+        Ok(Response::new(
+            student_handler::update(request.into_inner())
+                .await
+                .expect("Student Creation failed"),
+        ))
     }
 
     async fn delete_student(
@@ -68,10 +69,12 @@ impl Student for StudentCon {
         request: tonic::Request<student::DeleteStudentRequest>,
     ) -> Result<tonic::Response<student::DeleteStudentResponse>, tonic::Status> {
         println!("Got a request from {:?}", request.remote_addr());
-        let reply = student::DeleteStudentResponse {
-            message: "Update student placeholder".to_owned(),
-        };
-        Ok(Response::new(reply))
+        
+        Ok(Response::new(
+            student_handler::delete(request.into_inner())
+                .await
+                .expect("Student Creation failed"),
+        ))
     }
 
     async fn read_student_list(
@@ -79,17 +82,12 @@ impl Student for StudentCon {
         request: tonic::Request<student::ReadStudentListRequest>,
     ) -> Result<tonic::Response<student::ReadStudentListResponse>, tonic::Status> {
         println!("Got a request from {:?}", request.remote_addr());
-        let student_response = ReadStudentResponse {
-            first_name: "stuff".to_owned(),
-            last_name: "thing".to_owned(),
-            phone_number: "phone".to_owned(),
-            email: "email".to_owned(),
-        };
-
-        let reply = student::ReadStudentListResponse {
-            student_list: vec![student_response],
-        };
-        Ok(Response::new(reply))
+        
+        Ok(Response::new(
+            student_handler::read_list(request.into_inner())
+                .await
+                .expect("Student Creation failed"),
+        ))
     }
 }
 

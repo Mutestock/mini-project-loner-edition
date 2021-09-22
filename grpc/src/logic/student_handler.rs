@@ -1,10 +1,11 @@
 #![allow(dead_code, unused_imports)]
 
-use crate::connection::pg_connection::get_pg_pool;
 use crate::entities::student;
+use crate::{connection::pg_connection::get_pg_pool, entities::student::StudentConverter};
+use serde_derive::{Deserialize, Serialize};
 
 pub async fn create(
-    create_student_request: student::CreateStudentRequest,
+    request: student::CreateStudentRequest,
 ) -> anyhow::Result<student::CreateStudentResponse> {
     sqlx::query(
         r#"
@@ -12,14 +13,14 @@ pub async fn create(
         VALUES( $1, $2, $3, $4 )
         "#,
     )
-    .bind(create_student_request.first_name)
-    .bind(create_student_request.last_name)
-    .bind(create_student_request.phone_number)
-    .bind(create_student_request.email)
+    .bind(request.first_name)
+    .bind(request.last_name)
+    .bind(request.phone_number)
+    .bind(request.email)
     .execute(
         &get_pg_pool()
             .await
-            .expect("Create student connection issues"),
+            .expect("Create student connection failed"),
     )
     .await
     .expect("Could not create student");
@@ -30,25 +31,93 @@ pub async fn create(
 }
 
 pub async fn read(
-    read_student_request: student::ReadStudentRequest,
-) -> student::ReadStudentResponse {
-    todo!();
+    request: student::ReadStudentRequest,
+) -> anyhow::Result<student::ReadStudentResponse> {
+    let stud = sqlx::query_as::<_, student::StudentConverter>(
+        r#"
+        SELECT * FROM students WHERE id == $1
+        "#,
+    )
+    .bind(request.id)
+    .fetch_one(
+        &get_pg_pool()
+        .await
+        .expect("Read student connection failed")
+    )
+    .await
+    .expect("Could not read student");
+
+    Ok(stud.to_read_response())
 }
 
 pub async fn update(
-    update_student_request: student::UpdateStudentRequest,
-) -> student::UpdateStudentResponse {
-    todo!();
+    request: student::UpdateStudentRequest,
+) -> anyhow::Result<student::UpdateStudentResponse> {
+    let update_student = request
+        .new_student
+        .expect("Error in student request object");
+
+    sqlx::query(
+        r#"
+        UPDATE students SET (first_name, last_name, phone_number, email) = ( $1, $2, $3, $4)
+        WHERE ID == $5
+        "#,
+    )
+    .bind(update_student.first_name)
+    .bind(update_student.last_name)
+    .bind(update_student.phone_number)
+    .bind(update_student.email)
+    .bind(request.id)
+    .execute(
+        &get_pg_pool()
+            .await
+            .expect("Update student connection failed"),
+    )
+    .await
+    .expect("Could not update student");
+
+    Ok(student::UpdateStudentResponse {
+        message: "204".to_owned(),
+    })
 }
 
 pub async fn delete(
-    delete_student_request: student::DeleteStudentRequest,
-) -> student::DeleteStudentResponse {
-    todo!();
+    request: student::DeleteStudentRequest,
+) -> anyhow::Result<student::DeleteStudentResponse> {
+    sqlx::query(
+        r#"
+        DELETE FROM students WHERE id == $1
+        "#,
+    )
+    .bind(request.id)
+    .execute(
+        &get_pg_pool()
+            .await
+            .expect("Delete student connection failed"),
+    )
+    .await
+    .expect("Could not delete student");
+
+    Ok(student::DeleteStudentResponse {
+        message: "200".to_owned(),
+    })
 }
 
 pub async fn read_list(
-    _read_student_list_request: student::ReadStudentListRequest,
-) -> student::ReadStudentListResponse {
-    todo!();
+    _request: student::ReadStudentListRequest,
+) -> anyhow::Result<student::ReadStudentListResponse> {
+    let students = sqlx::query_as::<_, StudentConverter>(
+        r#"
+        SELECT * FROM students
+        "#,
+    )
+    .fetch_all(
+        &get_pg_pool()
+            .await
+            .expect("Read list student connection failed"),
+    )
+    .await
+    .expect("Could not read list of students");
+
+    Ok(StudentConverter::to_list_response(students))
 }
