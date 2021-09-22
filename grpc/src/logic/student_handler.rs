@@ -39,7 +39,11 @@ pub async fn read(
         "#,
     )
     .bind(request.id)
-    .fetch_one(&get_pg_pool().await.expect("Read student connection failed"))
+    .fetch_one(
+        &get_pg_pool()
+        .await
+        .expect("Read student connection failed")
+    )
     .await
     .expect("Could not read student");
 
