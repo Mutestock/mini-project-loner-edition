@@ -1,21 +1,23 @@
 use student::student_server::{Student, StudentServer};
-use student::{
-    CreateStudentRequest, CreateStudentResponse, ReadStudentResponse,
-};
+use student::{CreateStudentRequest, CreateStudentResponse, ReadStudentResponse};
 use tonic::{transport::Server, Request, Response, Status};
 
 #[macro_use]
 extern crate lazy_static;
 
 mod connection;
+mod entities;
 mod logic;
 mod utils;
 
+use entities::student;
+
+use logic::student_handler;
 use utils::config::{is_containerized_development_mode, is_production_mode, CONFIG};
 
-pub mod student {
-    tonic::include_proto!("student");
-}
+//pub mod student {
+//    tonic::include_proto!("student");
+//}
 
 #[derive(Default)]
 pub struct StudentCon {}
@@ -27,11 +29,12 @@ impl Student for StudentCon {
         request: Request<CreateStudentRequest>,
     ) -> Result<Response<CreateStudentResponse>, Status> {
         println!("Got a request from {:?}", request.remote_addr());
-
-        let reply = student::CreateStudentResponse {
-            message: format!("Hello {}!", request.into_inner().firstname),
-        };
-        Ok(Response::new(reply))
+        
+        Ok(Response::new(
+            student_handler::create(request.into_inner())
+                .await
+                .expect("Student Creation failed"),
+        ))
     }
 
     async fn read_student(
