@@ -1,10 +1,6 @@
 ﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true
-  },
   "profiles": {
-    "soap": {
+    "SoapService": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
