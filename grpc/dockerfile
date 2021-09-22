@@ -7,9 +7,9 @@ RUN apt-get update
 WORKDIR /usr/src/backend
 COPY . .
 
-EXPOSE 25100
+EXPOSE 13000
 #RUN cargo install --path .
 RUN rustup component add rustfmt
-RUN cargo b
+RUN cargo b --release
 
 CMD ["cargo","r","--bin","mini-proj-server"]

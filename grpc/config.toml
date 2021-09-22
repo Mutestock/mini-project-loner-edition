@@ -13,7 +13,7 @@ pg_host="localhost"
 
 [development]
 [development.server]
-port=25100
+port=13000
 host="localhost"
 
 [development.database]

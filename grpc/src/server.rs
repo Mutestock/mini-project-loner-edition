@@ -7,6 +7,8 @@ use student::{CreationResponse, Student};
 extern crate lazy_static;
 
 mod utils;
+mod connection;
+mod logic;
 
 use utils::config::{is_production_mode, CONFIG};
 
@@ -39,27 +41,23 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = match is_production_mode() {
         true => {
             let formatted_addr_string: &str = &format!("[::1]:{}", CONFIG.production.server.port);
-            let stuff = formatted_addr_string
-                .parse()
-                .expect("Shit ain't working");
+            let stuff = formatted_addr_string.parse().expect("Shit ain't working");
             stuff
         }
         false => {
             let formatted_addr_string: &str = &format!("[::1]:{}", CONFIG.development.server.port);
             println!("{}", formatted_addr_string);
-            let stuff = formatted_addr_string
-                .parse()
-                .expect("Shit ain't working");
+            let stuff = formatted_addr_string.parse().expect("Shit ain't working");
             stuff
         }
     };
 
-    let greeter = StudentCon::default();
+    let student_constructor = StudentCon::default();
 
-    println!("GreeterServer listening on {}", addr);
+    println!("gRPC server listening on {}", addr);
 
     Server::builder()
-        .add_service(StudentConstructorServer::new(greeter))
+        .add_service(StudentConstructorServer::new(student_constructor))
         .serve(addr)
         .await?;
 

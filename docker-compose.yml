@@ -34,7 +34,7 @@ services:
       dockerfile: dockerfile
     container_name: grpc_dev
     ports:
-      - 25100:25100
+      - 13000:25100
     networks:
       - app-network
 

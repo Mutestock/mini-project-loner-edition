@@ -1,3 +1,5 @@
+// Irrelevant in this project
+
 #[macro_use]
 extern crate lazy_static;
 
@@ -6,25 +8,33 @@ use student::Student;
 
 mod utils;
 
-use utils::config::{CONFIG,is_production_mode};
+use utils::config::{is_production_mode, CONFIG};
 
 pub mod student {
     tonic::include_proto!("student");
 }
 
-
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-
-    let mut client = StudentConstructorClient::connect("http://[::1]:50051").await?;
-    match is_production_mode(){
-        true => client = StudentConstructorClient::connect(format!("http://[::1]:{}", CONFIG.production.server.port)).await?,
-        false => client = StudentConstructorClient::connect(format!("http://[::1]:{}", CONFIG.development.server.port)).await?,
-    }
-
+    let mut client = match is_production_mode() {
+        true => {
+            StudentConstructorClient::connect(format!(
+                "http://[::1]:{}",
+                CONFIG.production.server.port
+            ))
+            .await?
+        }
+        false => {
+            StudentConstructorClient::connect(format!(
+                "http://[::1]:{}",
+                CONFIG.development.server.port
+            ))
+            .await?
+        }
+    };
 
     let request = tonic::Request::new(Student {
-        firstname:  "John".to_owned(),
+        firstname: "John".to_owned(),
         lastname: "Doe".to_owned(),
         id: 0,
         phone_number: "+45 12 12 12 12".to_owned(),
