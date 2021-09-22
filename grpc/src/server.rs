@@ -1,5 +1,5 @@
 use student::student_server::{Student, StudentServer};
-use student::{CreateStudentRequest, CreateStudentResponse, ReadStudentResponse};
+use student::{CreateStudentRequest, CreateStudentResponse};
 use tonic::{transport::Server, Request, Response, Status};
 
 #[macro_use]
@@ -46,7 +46,7 @@ impl Student for StudentCon {
         Ok(Response::new(
             student_handler::read(request.into_inner())
                 .await
-                .expect("Student Creation failed"),
+                .expect("Student Read failed"),
         ))
     }
 
@@ -55,12 +55,11 @@ impl Student for StudentCon {
         request: tonic::Request<student::UpdateStudentRequest>,
     ) -> Result<tonic::Response<student::UpdateStudentResponse>, tonic::Status> {
         println!("Got a request from {:?}", request.remote_addr());
-        
 
         Ok(Response::new(
             student_handler::update(request.into_inner())
                 .await
-                .expect("Student Creation failed"),
+                .expect("Student Update failed"),
         ))
     }
 
@@ -69,11 +68,11 @@ impl Student for StudentCon {
         request: tonic::Request<student::DeleteStudentRequest>,
     ) -> Result<tonic::Response<student::DeleteStudentResponse>, tonic::Status> {
         println!("Got a request from {:?}", request.remote_addr());
-        
+
         Ok(Response::new(
             student_handler::delete(request.into_inner())
                 .await
-                .expect("Student Creation failed"),
+                .expect("Student Delete failed"),
         ))
     }
 
@@ -82,11 +81,11 @@ impl Student for StudentCon {
         request: tonic::Request<student::ReadStudentListRequest>,
     ) -> Result<tonic::Response<student::ReadStudentListResponse>, tonic::Status> {
         println!("Got a request from {:?}", request.remote_addr());
-        
+
         Ok(Response::new(
             student_handler::read_list(request.into_inner())
                 .await
-                .expect("Student Creation failed"),
+                .expect("Student Read List failed"),
         ))
     }
 }

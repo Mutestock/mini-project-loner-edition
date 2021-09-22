@@ -24,12 +24,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
-    //let request = tonic::Request::new(ReadStudentListRequest {});
-//
-    //let response = client.read_student_list(request).await?;
-//
-    //println!("RESPONSE={:?}", response);
-    //create_student(client).await;
     let request = tonic::Request::new(CreateStudentRequest {
         first_name: "firstnamefromtonic".to_owned(),
         last_name: "lastnamefromtonic".to_owned(),

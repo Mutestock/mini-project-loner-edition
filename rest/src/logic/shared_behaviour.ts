@@ -28,7 +28,7 @@ async function queryInsertObject(newObject: Object, tableName: string) {
     await runQuery(query);
 }
 
-function queryBodyGuard(context: oak.RouterContext) {
+function queryBodyGuard(context: oak.RouterContext | oak.RouterContext<{id: string}, Record<string, any>>) {
     if (!context.request.hasBody) {
         context.throw(oak.Status.BadRequest, "Bad Request");
     }
@@ -37,7 +37,50 @@ function queryBodyGuard(context: oak.RouterContext) {
     }
 }
 
+async function queryReadObject(tableName: string, id: string){
+    const query = `SELECT * FROM ${tableName} WHERE id == ${id}`;
+    const student  = await runQuery(query)
+    return student
+}
+
+async function queryUpdateObject(newObject: Object, tableName: string, id: string){
+    let query = `UPDATE ${tableName} SET(`
+
+
+    const objectKeys = Object.keys(newObject);
+    const objectEntries = Object.entries(newObject);
+
+    for (const key of objectKeys) {
+        if (objectKeys.indexOf(key) !== objectKeys.length - 1) {
+            query += `${key},`
+        }
+        else {
+            query += `${key}`
+        }
+    }
+    query += ") = ("
+    for (const [key, value] of objectEntries) {
+        if (objectKeys.indexOf(key) !== objectKeys.length - 1) {
+            query += `${value},`
+        }
+        else {
+            query += `${value}`
+        }
+    }
+    query+= ` WHERE id == ${id}`;
+
+    await runQuery(query);
+}
+
+async function queryDeleteObject(tableName: string, id: string){
+    await runQuery(`DELETE FROM ${tableName} WHERE id == ${id}`)
+}
+
+async function queryReadObjectList(tableName: string){
+    return await runQuery(`SELECT * FROM ${tableName}`)
+}
+
 
 export {
-    queryInsertObject, queryBodyGuard
+    queryInsertObject, queryBodyGuard, queryReadObject, queryDeleteObject, queryUpdateObject, queryReadObjectList
 }

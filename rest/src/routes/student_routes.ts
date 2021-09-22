@@ -1,25 +1,28 @@
 import {oak} from "../../deps.ts";
 import {Student} from "../entities/student.ts";
-import {create} from "../logic/student_handler.ts"
+import {create, read, update, _delete, readList} from "../logic/student_handler.ts"
 
 const routePrefix = "/student"
 
 function studentRoutes(router: oak.Router): oak.Router { 
     router
-        .get(routePrefix, (context) => {
-            context.response.body = "Read list placeholder";
+        .get(routePrefix, async (context) => {
+            context.response.body = await readList();
         })
-        .get<{id: string}>(routePrefix+"/:id", (context) => {
-            context.response.body = "Read placeholder";
+        .get<{id: string}>(routePrefix+"/:id", async (context) => {
+            context.response.body = await read(context.params.id);
         })
         .post(routePrefix, async (context: oak.RouterContext) => {
             await create(context);
+            context.response.body = "201"
         })
-        .put<{id: string}>(routePrefix, (context) => {
-            context.response.body = "Read list placeholder";
+        .put<{id: string}>(routePrefix, async (context: oak.RouterContext<{id: string}, Record<string, any>>) => {
+            await update(context);
+            context.response.body ="204";
         })
-        .delete<{id: string}>(routePrefix, (context) => {
-            context.response.body = "Read list placeholder";
+        .delete<{id: string}>(routePrefix, async (context) => {
+            await _delete(context.params.id)
+            context.response.body ="200"
         })
     return router;
 }
