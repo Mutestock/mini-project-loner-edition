@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SoapCore;
 
 namespace SoapService
 {
@@ -16,7 +17,8 @@ namespace SoapService
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.AddSoapCore();
+            services.AddSingleton<IScheduleBookerService, ScheduleBookerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +37,8 @@ namespace SoapService
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
+                endpoints.UseSoapEndpoint<IScheduleBookerService>("/Service.svc", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+                endpoints.UseSoapEndpoint<IScheduleBookerService>("/Service.asmx", new SoapEncoderOptions(), SoapSerializer.XmlSerializer);
             });
         }
     }
