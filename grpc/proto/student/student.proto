@@ -2,18 +2,36 @@ syntax = "proto3";
 package student;
 
 service Student {
-    rpc CreateStudent (StudentRequest) returns (CreationResponse){}
+    rpc CreateStudent (NewStudentObject) returns (CreationResponse){}
+    rpc ReadStudent (Id) returns (StudentReply){}
 }
 
-message StudentRequest {
+message NewStudentObject {
     string firstname = 1;
     string lastname = 2;
-    int32 id = 3;
+    string phone_number = 3;
+    string email = 4;
+}
+
+message StudentObject{
+    int32 id = 1;
+    string firstname = 2;
+    string lastname = 3;
     string phone_number = 4;
     string email = 5;
+}
+
+message StudentReply{
+    string firstname = 1;
+    string lastname = 2;
+    string phone_number = 3;
+    string email = 4;
 }
 
 message CreationResponse {
     string message = 1;
 }
 
+message Id{
+    int32 id = 1;
+}

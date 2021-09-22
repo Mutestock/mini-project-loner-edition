@@ -1,5 +1,5 @@
 use student::student_server::{Student, StudentServer};
-use student::{CreationResponse, StudentRequest};
+use student::{CreationResponse, NewStudentObject, StudentReply};
 use tonic::{transport::Server, Request, Response, Status};
 
 #[macro_use]
@@ -22,12 +22,31 @@ pub struct StudentCon {}
 impl Student for StudentCon {
     async fn create_student(
         &self,
-        request: Request<StudentRequest>,
+        request: Request<NewStudentObject>,
     ) -> Result<Response<CreationResponse>, Status> {
         println!("Got a request from {:?}", request.remote_addr());
 
         let reply = student::CreationResponse {
             message: format!("Hello {}!", request.into_inner().firstname),
+        };
+        Ok(Response::new(reply))
+    }
+
+    async fn read_student(
+        &self,
+        request: tonic::Request<student::Id>,
+    ) -> Result<tonic::Response<student::StudentReply>, tonic::Status> {
+        println!("Got a request from {:?}", request.remote_addr());
+
+        //let reply = student::StudentReply {
+        //    message: format!("Hello {}!", request.into_inner().firstname),
+        //};
+
+        let reply = StudentReply {
+            firstname: "stuff".to_owned(),
+            lastname: "thing".to_owned(),
+            phone_number: "phone".to_owned(),
+            email: "email".to_owned(),
         };
         Ok(Response::new(reply))
     }
@@ -58,7 +77,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             false => {
                 let formatted_addr_string: &str = &format!(
                     "{}:{}",
-                    CONFIG.containerized.server.host, CONFIG.containerized.server.port
+                    CONFIG.development.server.host, CONFIG.development.server.port
                 );
                 formatted_addr_string
                     .parse()
