@@ -29,7 +29,7 @@ port=45000
 host="[::1]"
 
 [development.database]
-pg_port=25200
+pg_port=15100
 pg_user="test_user"
 pg_pass="test_pass"
 pg_db ="test_db"

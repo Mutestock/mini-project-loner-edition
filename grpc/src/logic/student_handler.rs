@@ -8,16 +8,21 @@ pub async fn create(
 ) -> anyhow::Result<student::CreateStudentResponse> {
     sqlx::query(
         r#"
-        INSERT INTO students (firstname, lastname, phone_number, email)
+        INSERT INTO students (first_name, last_name, phone_number, email)
         VALUES( $1, $2, $3, $4 )
         "#,
     )
-    .bind(create_student_request.firstname)
-    .bind(create_student_request.lastname)
+    .bind(create_student_request.first_name)
+    .bind(create_student_request.last_name)
     .bind(create_student_request.phone_number)
     .bind(create_student_request.email)
-    .execute(&get_pg_pool().await?)
-    .await?;
+    .execute(
+        &get_pg_pool()
+            .await
+            .expect("Create student connection issues"),
+    )
+    .await
+    .expect("Could not create student");
 
     Ok(student::CreateStudentResponse {
         message: "201".to_owned(),

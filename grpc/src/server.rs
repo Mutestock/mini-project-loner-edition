@@ -29,7 +29,7 @@ impl Student for StudentCon {
         request: Request<CreateStudentRequest>,
     ) -> Result<Response<CreateStudentResponse>, Status> {
         println!("Got a request from {:?}", request.remote_addr());
-        
+
         Ok(Response::new(
             student_handler::create(request.into_inner())
                 .await
@@ -44,8 +44,8 @@ impl Student for StudentCon {
         println!("Got a request from {:?}", request.remote_addr());
 
         let reply = ReadStudentResponse {
-            firstname: "stuff".to_owned(),
-            lastname: "thing".to_owned(),
+            first_name: "stuff".to_owned(),
+            last_name: "thing".to_owned(),
             phone_number: "phone".to_owned(),
             email: "email".to_owned(),
         };
@@ -80,8 +80,8 @@ impl Student for StudentCon {
     ) -> Result<tonic::Response<student::ReadStudentListResponse>, tonic::Status> {
         println!("Got a request from {:?}", request.remote_addr());
         let student_response = ReadStudentResponse {
-            firstname: "stuff".to_owned(),
-            lastname: "thing".to_owned(),
+            first_name: "stuff".to_owned(),
+            last_name: "thing".to_owned(),
             phone_number: "phone".to_owned(),
             email: "email".to_owned(),
         };
