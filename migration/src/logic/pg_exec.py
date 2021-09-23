@@ -3,6 +3,10 @@ from utils.config import MIGRATIONS_FOLDER_PATH
 
 
 STUDENTS_MIGRATIONS = MIGRATIONS_FOLDER_PATH+"/students"
+TEACHERS_MIGRATIONS = MIGRATIONS_FOLDER_PATH+"/teachers"
+GRADES_MIGRATIONS = MIGRATIONS_FOLDER_PATH+"/grades"
+GRADES_TEACHERS_MIGRATIONS = MIGRATIONS_FOLDER_PATH+"/grades_teachers"
+GRADES_STUDENTS_MIGRATIONS = MIGRATIONS_FOLDER_PATH+"/grades_students"
 
 
 def get_sql(folder: str, sql_script_type: str) -> str:
@@ -24,6 +28,10 @@ def migrate_down() -> None:
     conn = make_pg_pool()
     
     cursor = conn.cursor()
+    cursor.execute(get_down_sql(GRADES_STUDENTS_MIGRATIONS))
+    cursor.execute(get_down_sql(GRADES_TEACHERS_MIGRATIONS))
+    cursor.execute(get_down_sql(GRADES_MIGRATIONS))
+    cursor.execute(get_down_sql(TEACHERS_MIGRATIONS))
     cursor.execute(get_down_sql(STUDENTS_MIGRATIONS))
     
     conn.commit()
@@ -37,6 +45,10 @@ def migrate_up() -> None:
     
     cursor = conn.cursor()
     cursor.execute(get_up_sql(STUDENTS_MIGRATIONS))
+    cursor.execute(get_up_sql(TEACHERS_MIGRATIONS))
+    cursor.execute(get_up_sql(GRADES_MIGRATIONS))
+    cursor.execute(get_up_sql(GRADES_STUDENTS_MIGRATIONS))
+    cursor.execute(get_up_sql(GRADES_TEACHERS_MIGRATIONS))
     
     conn.commit()
     cursor.close()

@@ -14,8 +14,8 @@ const dbParams = {
 
 const pool = new postgres.Pool(dbParams, config.database.max_pool_connections, true);
 
-async function runQuery(query: string) {
-    const client = await pool.connect();
+async function runQuery(query: string, _pool: postgres.Pool = pool) {
+    const client = await _pool.connect();
     let result: any;
     try {
         result = await client.queryObject(query);
