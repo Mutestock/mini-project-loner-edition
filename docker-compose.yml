@@ -44,6 +44,13 @@ services:
     networks:
       - app-network
 
+  soap:
+    build: ./soap
+    container_name: soap_dev
+    ports:
+      - 10040:5000
+    networks:
+      - app-network
 
 networks:
   app-network:
