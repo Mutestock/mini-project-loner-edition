@@ -1,1 +1,1 @@
-DROP TABLE IF NOT EXISTS teachers;
+DROP TABLE IF EXISTS teachers;
