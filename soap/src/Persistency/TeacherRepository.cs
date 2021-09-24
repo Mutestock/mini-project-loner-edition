@@ -24,6 +24,9 @@ namespace SoapService.Persistency
         }
         public void AddNew(Teacher teacher)
         {
+            DateTime currentTime = DateTime.Now;
+            teacher.CreatedAt = currentTime;
+            teacher.UpdatedAt = currentTime;
             _context.Teachers.Add(teacher);
             _context.SaveChanges();
         }
@@ -48,6 +51,7 @@ namespace SoapService.Persistency
             oldTeacher.LastName = updatedTeacher.LastName;
             oldTeacher.PhoneNumber = updatedTeacher.PhoneNumber;
             oldTeacher.Email = updatedTeacher.Email;
+            oldTeacher.UpdatedAt = DateTime.Now;
             _context.SaveChanges();
         }
     }
