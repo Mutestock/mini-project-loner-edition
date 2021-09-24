@@ -5,9 +5,9 @@ from utils.config import GRADES_MIGRATIONS
 from utils.query_utils import get_down_sql, get_up_sql
 
 
-class Grade( AbstractEntity):
+class Grade(AbstractEntity):
     name: str
-    
+
     def __init__(self, name):
         self.name = name
 

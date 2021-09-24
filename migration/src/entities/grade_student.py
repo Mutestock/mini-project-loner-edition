@@ -5,7 +5,7 @@ from utils.config import GRADES_STUDENTS_MIGRATIONS
 from utils.query_utils import get_down_sql, get_up_sql
 
 
-class GradeStudent( AbstractEntity):
+class GradeStudent(AbstractEntity):
     grade_id: int
     student_id: int
 

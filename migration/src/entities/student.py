@@ -7,12 +7,12 @@ from utils.query_utils import get_down_sql, get_up_sql
 # Student references new students. All timestamps won't be represented.
 
 
-class Student( AbstractEntity):
+class Student(AbstractEntity):
     first_name: str
     last_name: str
     phone_number: str
     email: str
-    
+
     def __init__(self, first_name, last_name, phone_number, email):
         self.first_name = first_name
         self.last_name = last_name

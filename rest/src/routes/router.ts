@@ -1,12 +1,12 @@
 import {oak} from "../../deps.ts"
-import {studentRoutes} from "./student_routes.ts";
+import {gradeRoutes} from "./grade_routes.ts";
 import {basicRoutes} from "./util_routes.ts";
 
 
 // Contains configurations for all routes
 
 let router = new oak.Router();
-router = studentRoutes(router);
+router = gradeRoutes(router);
 router = basicRoutes(router);
 
 

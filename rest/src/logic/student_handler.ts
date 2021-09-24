@@ -1,25 +1,25 @@
 
-import { Student, NewStudent, StudentResponse } from "../entities/student.ts";
+import { NewGrade } from "../entities/grade.ts";
 import { queryInsertObject, queryBodyGuard, queryReadObject, queryDeleteObject, queryUpdateObject, queryReadObjectList } from "./shared_behaviour.ts";
 import { oak } from "../../deps.ts";
 
 
-// Expected input = newStudent
+// Expected input = newGrade
 async function create(context: oak.RouterContext) {
     queryBodyGuard(context);
-    const newStudent = await context
+    const newGrade = await context
         .request
         .body()
-        .value as NewStudent;
-    await queryInsertObject(newStudent, "students");
+        .value as NewGrade;
+    await queryInsertObject(newGrade, "grades");
 }
 
 // Expected input = id
 async function read(id: string) {
-    return await queryReadObject("students", id)
+    return await queryReadObject("grades", id)
 }
 
-// Expected input = id, newStudent
+// Expected input = id, newGrade
 async function update(context: oak.RouterContext<{id: string}, Record<string, any>>) {
     queryBodyGuard(context);
     let id = "";
@@ -27,21 +27,21 @@ async function update(context: oak.RouterContext<{id: string}, Record<string, an
         id = context.params.id
     }
 
-    const updateStudent = await context
+    const updateGrade = await context
         .request
         .body()
-        .value as NewStudent
-    await queryUpdateObject(updateStudent, "students", id);
+        .value as NewGrade
+    await queryUpdateObject(updateGrade, "grades", id);
 }
 
 // Expected input = id
 async function _delete(id: string) {
-    await queryDeleteObject("students",id);
+    await queryDeleteObject("grades",id);
 }
 
 // Expected input = None
 async function readList() {
-    return await queryReadObjectList("students")
+    return await queryReadObjectList("grades")
 }
 
 export {

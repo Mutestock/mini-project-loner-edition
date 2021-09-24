@@ -39,8 +39,8 @@ function queryBodyGuard(context: oak.RouterContext | oak.RouterContext<{id: stri
 
 async function queryReadObject(tableName: string, id: string){
     const query = `SELECT * FROM ${tableName} WHERE id == ${id}`;
-    const student  = await runQuery(query)
-    return student
+    const grade  = await runQuery(query)
+    return grade
 }
 
 async function queryUpdateObject(newObject: Object, tableName: string, id: string){

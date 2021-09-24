@@ -1,10 +1,10 @@
 import {oak} from "../../deps.ts";
-import {Student} from "../entities/student.ts";
-import {create, read, update, _delete, readList} from "../logic/student_handler.ts"
+import {Grade} from "../entities/grade.ts";
+import {create, read, update, _delete, readList} from "../logic/grade_handler.ts"
 
-const routePrefix = "/student"
+const routePrefix = "/grade"
 
-function studentRoutes(router: oak.Router): oak.Router { 
+function gradeRoutes(router: oak.Router): oak.Router { 
     router
         .get(routePrefix, async (context) => {
             context.response.body = await readList();
@@ -29,5 +29,5 @@ function studentRoutes(router: oak.Router): oak.Router {
 
 
 export {
-    studentRoutes,
+    gradeRoutes,
 }

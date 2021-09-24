@@ -25,25 +25,25 @@ Deno.test('Test In Memory Test database', async () => {
     asserts.assert(2===2);
 });
 
-Deno.test("Test Create Student", () => {
+Deno.test("Test Create Grade", () => {
     const client = new postgres.Client(getClearConfiguration());
     client.connect();
     client.end();
 })
 
-Deno.test("Test Read Student", () => {
+Deno.test("Test Read Grade", () => {
 
 })
 
-Deno.test("Update Student", () => {
+Deno.test("Update Grade", () => {
 
 })
 
-Deno.test("Delete Student", () => {
+Deno.test("Delete Grade", () => {
 
 })
 
-Deno.test("Read List Student", () => {
+Deno.test("Read List Grade", () => {
 
 })
 
