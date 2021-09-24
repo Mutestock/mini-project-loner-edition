@@ -21,14 +21,12 @@ async function read(id: string) {
 
 // Expected input = id, newGrade
 async function update(context: oak.RouterContext<{id: string}, Record<string, any>>) {
-    //console.log(await context.request.body);
     queryBodyGuard(context);
     let id = "";
     if (context.params.id){
         id = context.params.id
     }
     
-
     const updateGrade = await context
         .request
         .body()
