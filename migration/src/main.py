@@ -26,7 +26,7 @@ For new entities:
 # Sleep to allow postgres to start up in container
 # Alternative would be wait-for-it.sh
 def main() -> None:
-    time.sleep(2.0)
+    time.sleep(5.0)
     migrate_down()
     migrate_up()
     populate()
