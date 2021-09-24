@@ -1,5 +1,4 @@
 import {oak} from "../../deps.ts";
-import {Grade} from "../entities/grade.ts";
 import {create, read, update, _delete, readList} from "../logic/grade_handler.ts"
 
 const routePrefix = "/grade"

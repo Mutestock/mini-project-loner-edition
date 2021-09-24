@@ -38,7 +38,7 @@ function queryBodyGuard(context: oak.RouterContext | oak.RouterContext<{id: stri
 }
 
 async function queryReadObject(tableName: string, id: string){
-    const query = `SELECT * FROM ${tableName} WHERE id == ${id}`;
+    const query = `SELECT * FROM ${tableName} WHERE id = ${id}`;
     const grade  = await runQuery(query)
     return grade
 }
@@ -67,13 +67,13 @@ async function queryUpdateObject(newObject: Object, tableName: string, id: strin
             query += `${value}`
         }
     }
-    query+= ` WHERE id == ${id}`;
+    query+= ` WHERE id = ${id}`;
 
     await runQuery(query);
 }
 
 async function queryDeleteObject(tableName: string, id: string){
-    await runQuery(`DELETE FROM ${tableName} WHERE id == ${id}`)
+    await runQuery(`DELETE FROM ${tableName} WHERE id = ${id}`)
 }
 
 async function queryReadObjectList(tableName: string){
