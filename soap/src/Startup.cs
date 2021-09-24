@@ -29,7 +29,8 @@ namespace SoapService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSoapCore();
-            services.AddScoped<IScheduleBookerService, ScheduleBookerService>();
+            services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddDbContext<TeacherContext>(options 
                 => options
                 .UseNpgsql(Configuration.GetConnectionString("TeacherContext"))
@@ -52,8 +53,8 @@ namespace SoapService
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
-                endpoints.UseSoapEndpoint<IScheduleBookerService>("/Service.svc", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
-                endpoints.UseSoapEndpoint<IScheduleBookerService>("/Service.asmx", new SoapEncoderOptions(), SoapSerializer.XmlSerializer);
+                endpoints.UseSoapEndpoint<ITeacherService>("/Service.svc", new SoapEncoderOptions(), SoapSerializer.DataContractSerializer);
+                endpoints.UseSoapEndpoint<ITeacherService>("/Service.asmx", new SoapEncoderOptions(), SoapSerializer.XmlSerializer);
             });
         }
     }
