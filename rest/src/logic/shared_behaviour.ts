@@ -19,12 +19,13 @@ async function queryInsertObject(newObject: Object, tableName: string) {
     query += ") VALUES("
     for (const [key, value] of objectEntries) {
         if (objectKeys.indexOf(key) !== objectKeys.length - 1) {
-            query += `${value},`
+            query += `'${value}',`
         }
         else {
-            query += `${value}`
+            query += `'${value}'`
         }
     }
+    query += `);`
     await runQuery(query);
 }
 
