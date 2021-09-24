@@ -62,13 +62,13 @@ async function queryUpdateObject(newObject: Object, tableName: string, id: strin
     query += ") = ("
     for (const [key, value] of objectEntries) {
         if (objectKeys.indexOf(key) !== objectKeys.length - 1) {
-            query += `${value},`
+            query += `'${value}',`
         }
         else {
-            query += `${value}`
+            query += `'${value}')`
         }
     }
-    query+= ` WHERE id = ${id}`;
+    query+= ` WHERE id = ${id};`;
 
     await runQuery(query);
 }

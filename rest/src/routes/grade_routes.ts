@@ -15,11 +15,11 @@ function gradeRoutes(router: oak.Router): oak.Router {
             await create(context);
             context.response.body = "201"
         })
-        .put<{id: string}>(routePrefix, async (context: oak.RouterContext<{id: string}, Record<string, any>>) => {
+        .put<{id: string}>(routePrefix+"/:id", async (context: oak.RouterContext<{id: string}, Record<string, any>>) => {
             await update(context);
             context.response.body ="204";
         })
-        .delete<{id: string}>(routePrefix, async (context) => {
+        .delete<{id: string}>(routePrefix+"/:id", async (context) => {
             await _delete(context.params.id)
             context.response.body ="200"
         })
