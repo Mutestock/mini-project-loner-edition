@@ -44,6 +44,10 @@ async function readList() {
     return await queryReadObjectList("grades")
 }
 
+function head(){
+    return "hi"
+}
+
 export {
-    create, read, update, _delete, readList
+    create, read, update, _delete, readList, head
 }
