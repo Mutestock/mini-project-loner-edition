@@ -1,6 +1,5 @@
 import { config } from "../utils/config.ts";
 import { postgres } from "../../deps.ts";
-import { db } from "https://deno.land/x/media_types@v2.10.1/db.ts";
 
 // https://deno.land/x/postgres@v0.12.0
 
