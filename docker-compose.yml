@@ -52,6 +52,14 @@ services:
     networks:
       - app-network
 
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - 10050:80
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: "bridge"
