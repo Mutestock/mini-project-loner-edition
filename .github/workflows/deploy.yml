@@ -15,7 +15,6 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
-        PASSPHRASE: ${{ secrets.PASSPHRASE }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: |
@@ -27,7 +26,6 @@ jobs:
       env:
         HOST: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
-        PASSPHRASE: ${{ secrets.PASSPHRASE }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
       with:
@@ -39,9 +37,8 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
-        PASSPHRASE: ${{ secrets.PASSPHRASE }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: |
           cd ~/deployment
-          docker-compose -f docker-compose.prod.yml up -d --build
+          docker-compose up -d --build --remove-orphans
