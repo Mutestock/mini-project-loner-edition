@@ -6,7 +6,7 @@ const routePrefix = "/grade"
 function gradeRoutes(router: oak.Router): oak.Router { 
     router
         .get(routePrefix, async (context) => {
-            context.response.body = await (await readList()).rows;
+            context.response.body = await (await readList());
         })
         .get<{id: string}>(routePrefix+"/:id", async (context) => {
             context.response.body = await read(context.params.id);

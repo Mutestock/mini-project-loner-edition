@@ -1,11 +1,9 @@
 
-import { NewGrade } from "../entities/grade.ts";
+import { NewGrade, Grade, GradeLinked } from "../entities/grade.ts";
 import { queryInsertObject, queryBodyGuard, queryReadObject, queryDeleteObject, queryUpdateObject, queryReadObjectList } from "./shared_behaviour.ts";
 import { oak } from "../../deps.ts";
-import {Link} from "../entities/link.ts";
-import {SITE_URI} from "../utils/config.ts";
 
-const BASE_URI = `${SITE_URI}/grade`
+
 
 // Expected input = newGrade
 async function create(context: oak.RouterContext) {
@@ -19,24 +17,19 @@ async function create(context: oak.RouterContext) {
 
 // Expected input = id
 async function read(id: string) {
-    let grade = await queryReadObject("grades", id);
-    let obj = grade.rows[0] as any;
-    
-    obj.links = [
-        new Link("self", `${BASE_URI}/${id}`),
-        new Link("all", `${BASE_URI}`)
-    ]
-    return JSON.stringify(obj)
+    const rawQueryGrade = await queryReadObject("grades", id);
+    const gradeParsed = JSON.parse(JSON.stringify(rawQueryGrade.rows[0]));
+    return JSON.stringify(GradeLinked.fromParsedObject(gradeParsed));
 }
 
 // Expected input = id, newGrade
-async function update(context: oak.RouterContext<{id: string}, Record<string, any>>) {
+async function update(context: oak.RouterContext<{ id: string }, Record<string, any>>) {
     queryBodyGuard(context);
     let id = "";
-    if (context.params.id){
+    if (context.params.id) {
         id = context.params.id
     }
-    
+
     const updateGrade = await context
         .request
         .body()
@@ -46,15 +39,23 @@ async function update(context: oak.RouterContext<{id: string}, Record<string, an
 
 // Expected input = id
 async function _delete(id: string) {
-    await queryDeleteObject("grades",id);
+    await queryDeleteObject("grades", id);
 }
 
 // Expected input = None
 async function readList() {
-    return await queryReadObjectList("grades")
+    const rawQueryGradeList = await queryReadObjectList("grades")    
+    const gradeListParsed = JSON.parse(JSON.stringify(rawQueryGradeList.rows));
+    
+    const gradeList: GradeLinked[] = [];
+    gradeListParsed.forEach(function (grade: Object) {
+        gradeList.push(GradeLinked.fromParsedObject(grade));
+    });
+
+    return JSON.stringify(gradeList);
 }
 
-function head(){
+function head() {
     return "hi"
 }
 
