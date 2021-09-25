@@ -1,15 +1,15 @@
 import {oak} from "../../deps.ts";
-import {create, read, update, _delete, readList} from "../logic/grade_handler.ts"
+import {create, read, update, _delete, readList, head} from "../logic/grade_handler.ts"
 
 const routePrefix = "/grade"
 
 function gradeRoutes(router: oak.Router): oak.Router { 
     router
         .get(routePrefix, async (context) => {
-            context.response.body = await readList();
+            context.response.body = await (await readList()).rows;
         })
         .get<{id: string}>(routePrefix+"/:id", async (context) => {
-            context.response.body = await read(context.params.id);
+            context.response.body = await (await read(context.params.id)).rows;
         })
         .post(routePrefix, async (context: oak.RouterContext) => {
             await create(context);
@@ -23,7 +23,10 @@ function gradeRoutes(router: oak.Router): oak.Router {
             await _delete(context.params.id)
             context.response.body ="200"
         })
-    return router;
+        .head(routePrefix, (context) => {
+            context.response.body =head()
+        })
+    return router;  
 }
 
 

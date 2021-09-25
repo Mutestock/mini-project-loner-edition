@@ -15,13 +15,12 @@ const pool = new postgres.Pool(dbParams, config.database.max_pool_connections, t
 
 async function runQuery(query: string, _pool: postgres.Pool = pool) {
     const client = await _pool.connect();
-    let result: any;
     try {
-        result = await client.queryObject(query);
+        const result = await client.queryObject(query);
+        return result;
     } finally {
         client.release();
     }
-    return result;
 }
 
 export {
