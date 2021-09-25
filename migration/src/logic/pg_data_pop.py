@@ -45,7 +45,7 @@ def populate() -> None:
 
     for grade_student in [
         GradeStudent(1, 1),
-        GradeStudent(2, 2),
+        GradeStudent(2, 3),
         GradeStudent(4, 3),
         GradeStudent(3, 4),
         GradeStudent(1, 5),

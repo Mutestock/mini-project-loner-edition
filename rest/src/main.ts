@@ -1,4 +1,4 @@
-import { oak, colors } from "../deps.ts";
+import { oak, colors, oakCors } from "../deps.ts";
 import { router } from "./routes/router.ts";
 import { config } from "./utils/config.ts";
 
@@ -9,6 +9,7 @@ import { config } from "./utils/config.ts";
 let app = new oak.Application();
 app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(oakCors({ origin: "*" }));
 
 app.addEventListener("listen", ({ hostname, port, serverType }) => {
     console.log(
