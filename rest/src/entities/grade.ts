@@ -1,11 +1,10 @@
+import {Link} from "./link.ts";
 
-
-// For post requests with auto incrementing uuids
 class NewGrade {
-    private name: string;
+    private _name: string;
 
     constructor(name: string) {
-        this.name = name;
+        this._name = name;
     }
 }
 

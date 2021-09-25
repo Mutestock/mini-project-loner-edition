@@ -24,8 +24,9 @@ try {
         ": " + e.message);
 }
 
+const SITE_URI = `http://${config.target_uri}:${config.server.port}`
 
 export {
-    config,
+    config, SITE_URI
 }
 

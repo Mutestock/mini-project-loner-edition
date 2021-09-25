@@ -1,4 +1,6 @@
 [development]
+target_uri="localhost"
+
 [development.server]
 port=20000
 hostname="127.0.0.1"
@@ -12,6 +14,8 @@ pg_host="localhost"
 max_pool_connections=20
 
 [containerized]
+target_uri="localhost"
+
 [containerized.server]
 port=15000
 hostname="0.0.0.0"

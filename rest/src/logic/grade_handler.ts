@@ -2,7 +2,10 @@
 import { NewGrade } from "../entities/grade.ts";
 import { queryInsertObject, queryBodyGuard, queryReadObject, queryDeleteObject, queryUpdateObject, queryReadObjectList } from "./shared_behaviour.ts";
 import { oak } from "../../deps.ts";
+import {Link} from "../entities/link.ts";
+import {SITE_URI} from "../utils/config.ts";
 
+const BASE_URI = `${SITE_URI}/grade`
 
 // Expected input = newGrade
 async function create(context: oak.RouterContext) {
@@ -16,7 +19,14 @@ async function create(context: oak.RouterContext) {
 
 // Expected input = id
 async function read(id: string) {
-    return await queryReadObject("grades", id)
+    let grade = await queryReadObject("grades", id);
+    let obj = grade.rows[0] as any;
+    
+    obj.links = [
+        new Link("self", `${BASE_URI}/${id}`),
+        new Link("all", `${BASE_URI}`)
+    ]
+    return JSON.stringify(obj)
 }
 
 // Expected input = id, newGrade
