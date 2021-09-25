@@ -7,7 +7,7 @@ mod entities;
 mod utils;
 
 use entities::student::student_client::StudentClient;
-use entities::student::{CreateStudentRequest, ReadStudentListRequest};
+use entities::student::{CreateStudentRequest, ReadStudentRequest};
 use tonic::transport::Channel;
 use utils::config::{is_production_mode, CONFIG};
 
@@ -19,7 +19,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .await?
         }
         false => {
-            StudentClient::connect(format!("http://[::1]:{}", 13000))
+            StudentClient::connect(format!("http://[::1]:{}", 10030))
                 .await?
         }
     };
@@ -31,11 +31,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         email: "emailfromtonic".to_owned(),
     });
 
+    let request02 = tonic::Request::new(ReadStudentRequest{
+        id: 2,
+    });
+
+
     let response = client
         .create_student(request)
         .await
         .expect("create_student failed in client");
     println!("RESPONSE={:?}", response);
+
+    let response02 = client.read_student(request02).await.expect("Something was wrong with read student");
+    println!("resp= {:?}",response02);
 
     Ok(())
 }

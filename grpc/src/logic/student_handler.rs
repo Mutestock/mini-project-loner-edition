@@ -35,7 +35,7 @@ pub async fn read(
 ) -> anyhow::Result<student::ReadStudentResponse> {
     let stud = sqlx::query_as::<_, student::StudentConverter>(
         r#"
-        SELECT * FROM students WHERE id == $1
+        SELECT * FROM students WHERE id = $1
         "#,
     )
     .bind(request.id)
@@ -60,7 +60,7 @@ pub async fn update(
     sqlx::query(
         r#"
         UPDATE students SET (first_name, last_name, phone_number, email) = ( $1, $2, $3, $4)
-        WHERE ID == $5
+        WHERE ID = $5
         "#,
     )
     .bind(update_student.first_name)
@@ -86,7 +86,7 @@ pub async fn delete(
 ) -> anyhow::Result<student::DeleteStudentResponse> {
     sqlx::query(
         r#"
-        DELETE FROM students WHERE id == $1
+        DELETE FROM students WHERE id = $1
         "#,
     )
     .bind(request.id)
