@@ -5,16 +5,18 @@ import { toml } from "../../deps.ts";
 // Run from root of program
 const CONFIG_PATH = "./config.toml";
 const CONFIG = await Deno.readTextFile(CONFIG_PATH);
-const PRODUCTION = Deno.env.get("PRODUCTION");
+const CONTAINERIZED = Deno.env.get("CONTAINERIZED");
 
 let config: any;
 
 try {
-    if(PRODUCTION=="1"){
-        config = toml.parse(CONFIG).production;
+    if(CONTAINERIZED=="1"){
+        config = toml.parse(CONFIG).containerized;
+        console.log("Rest running in containerized mode");
     }
     else{
         config = toml.parse(CONFIG).development;
+        console.log("Rest running in development mode");
     }
     
 } catch (e) {

@@ -20,6 +20,8 @@ services:
   rest:
     build: ./rest
     container_name: deno-deploy
+    environment:
+      - CONTAINERIZED=1
     ports:
       - "10020:15000"
     networks:

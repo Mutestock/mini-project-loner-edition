@@ -1,9 +1,22 @@
 [development]
 [development.server]
+port=20000
+hostname="127.0.0.1"
+
+[development.database]
+pg_port=10010
+pg_user="test_user"
+pg_pass="test_pass"
+pg_db ="test_db"
+pg_host="localhost"
+max_pool_connections=20
+
+[containerized]
+[containerized.server]
 port=15000
 hostname="0.0.0.0"
 
-[development.database]
+[containerized.database]
 pg_port=5432
 pg_user="test_user"
 pg_pass="test_pass"
