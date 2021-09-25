@@ -11,3 +11,12 @@
 <br>
 <p> Additionally a separate Python container will be doing the migration
 <p>Docker-compose up --build<p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>For instructions, see instructions.txt (Last requirement in assignment definition</p>
