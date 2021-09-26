@@ -230,10 +230,13 @@ export class ReadStudentResponse implements GrpcMessage {
    * @param _instance message instance
    */
   static refineValues(_instance: ReadStudentResponse) {
+    _instance.id = _instance.id || 0;
     _instance.firstName = _instance.firstName || '';
     _instance.lastName = _instance.lastName || '';
     _instance.phoneNumber = _instance.phoneNumber || '';
     _instance.email = _instance.email || '';
+    _instance.updatedAt = _instance.updatedAt || '';
+    _instance.createdAt = _instance.createdAt || '';
   }
 
   /**
@@ -250,16 +253,25 @@ export class ReadStudentResponse implements GrpcMessage {
 
       switch (_reader.getFieldNumber()) {
         case 1:
-          _instance.firstName = _reader.readString();
+          _instance.id = _reader.readInt32();
           break;
         case 2:
-          _instance.lastName = _reader.readString();
+          _instance.firstName = _reader.readString();
           break;
         case 3:
-          _instance.phoneNumber = _reader.readString();
+          _instance.lastName = _reader.readString();
           break;
         case 4:
+          _instance.phoneNumber = _reader.readString();
+          break;
+        case 5:
           _instance.email = _reader.readString();
+          break;
+        case 6:
+          _instance.updatedAt = _reader.readString();
+          break;
+        case 7:
+          _instance.createdAt = _reader.readString();
           break;
         default:
           _reader.skipField();
@@ -278,24 +290,36 @@ export class ReadStudentResponse implements GrpcMessage {
     _instance: ReadStudentResponse,
     _writer: BinaryWriter
   ) {
+    if (_instance.id) {
+      _writer.writeInt32(1, _instance.id);
+    }
     if (_instance.firstName) {
-      _writer.writeString(1, _instance.firstName);
+      _writer.writeString(2, _instance.firstName);
     }
     if (_instance.lastName) {
-      _writer.writeString(2, _instance.lastName);
+      _writer.writeString(3, _instance.lastName);
     }
     if (_instance.phoneNumber) {
-      _writer.writeString(3, _instance.phoneNumber);
+      _writer.writeString(4, _instance.phoneNumber);
     }
     if (_instance.email) {
-      _writer.writeString(4, _instance.email);
+      _writer.writeString(5, _instance.email);
+    }
+    if (_instance.updatedAt) {
+      _writer.writeString(6, _instance.updatedAt);
+    }
+    if (_instance.createdAt) {
+      _writer.writeString(7, _instance.createdAt);
     }
   }
 
+  private _id?: number;
   private _firstName?: string;
   private _lastName?: string;
   private _phoneNumber?: string;
   private _email?: string;
+  private _updatedAt?: string;
+  private _createdAt?: string;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -303,11 +327,20 @@ export class ReadStudentResponse implements GrpcMessage {
    */
   constructor(_value?: RecursivePartial<ReadStudentResponse.AsObject>) {
     _value = _value || {};
+    this.id = _value.id;
     this.firstName = _value.firstName;
     this.lastName = _value.lastName;
     this.phoneNumber = _value.phoneNumber;
     this.email = _value.email;
+    this.updatedAt = _value.updatedAt;
+    this.createdAt = _value.createdAt;
     ReadStudentResponse.refineValues(this);
+  }
+  get id(): number | undefined {
+    return this._id;
+  }
+  set id(value: number | undefined) {
+    this._id = value;
   }
   get firstName(): string | undefined {
     return this._firstName;
@@ -333,6 +366,18 @@ export class ReadStudentResponse implements GrpcMessage {
   set email(value: string | undefined) {
     this._email = value;
   }
+  get updatedAt(): string | undefined {
+    return this._updatedAt;
+  }
+  set updatedAt(value: string | undefined) {
+    this._updatedAt = value;
+  }
+  get createdAt(): string | undefined {
+    return this._createdAt;
+  }
+  set createdAt(value: string | undefined) {
+    this._createdAt = value;
+  }
 
   /**
    * Serialize message to binary data
@@ -349,10 +394,13 @@ export class ReadStudentResponse implements GrpcMessage {
    */
   toObject(): ReadStudentResponse.AsObject {
     return {
+      id: this.id,
       firstName: this.firstName,
       lastName: this.lastName,
       phoneNumber: this.phoneNumber,
-      email: this.email
+      email: this.email,
+      updatedAt: this.updatedAt,
+      createdAt: this.createdAt
     };
   }
 
@@ -373,10 +421,13 @@ export class ReadStudentResponse implements GrpcMessage {
     options?: ToProtobufJSONOptions
   ): ReadStudentResponse.AsProtobufJSON {
     return {
+      id: this.id,
       firstName: this.firstName,
       lastName: this.lastName,
       phoneNumber: this.phoneNumber,
-      email: this.email
+      email: this.email,
+      updatedAt: this.updatedAt,
+      createdAt: this.createdAt
     };
   }
 }
@@ -385,20 +436,26 @@ export module ReadStudentResponse {
    * Standard JavaScript object representation for ReadStudentResponse
    */
   export interface AsObject {
+    id?: number;
     firstName?: string;
     lastName?: string;
     phoneNumber?: string;
     email?: string;
+    updatedAt?: string;
+    createdAt?: string;
   }
 
   /**
    * Protobuf JSON representation for ReadStudentResponse
    */
   export interface AsProtobufJSON {
+    id?: number;
     firstName?: string;
     lastName?: string;
     phoneNumber?: string;
     email?: string;
+    updatedAt?: string;
+    createdAt?: string;
   }
 }
 
