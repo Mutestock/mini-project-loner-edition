@@ -13,6 +13,7 @@ import { StudentsComponent } from './students/students.component';
 import { GradesComponent } from './grades/grades.component'
 import { GrpcCoreModule } from '@ngx-grpc/core';
 import { GrpcWebClientModule } from '@ngx-grpc/grpc-web-client';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { GrpcWebClientModule } from '@ngx-grpc/grpc-web-client';
     MatTableModule,
     GrpcCoreModule.forRoot(),
     GrpcWebClientModule.forRoot({
-      settings: { host: 'http://grpc_dev:10030' }
+      settings: { host: environment.grpcUrl }
     })
   ],
   providers: [],
