@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  grpcUrl: "http://grpc_dev:10030"
+  grpcUrl: "http://host.docker.internal:10050"
 };
