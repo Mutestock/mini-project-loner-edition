@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from in.student import student_pb2 as in_dot_student_dot_student__pb2
+from in import student_pb2 as in_dot_student__pb2
 
 
 class StudentStub(object):
@@ -16,28 +16,28 @@ class StudentStub(object):
         """
         self.CreateStudent = channel.unary_unary(
                 '/student.Student/CreateStudent',
-                request_serializer=in_dot_student_dot_student__pb2.CreateStudentRequest.SerializeToString,
-                response_deserializer=in_dot_student_dot_student__pb2.CreateStudentResponse.FromString,
+                request_serializer=in_dot_student__pb2.CreateStudentRequest.SerializeToString,
+                response_deserializer=in_dot_student__pb2.CreateStudentResponse.FromString,
                 )
         self.ReadStudent = channel.unary_unary(
                 '/student.Student/ReadStudent',
-                request_serializer=in_dot_student_dot_student__pb2.ReadStudentRequest.SerializeToString,
-                response_deserializer=in_dot_student_dot_student__pb2.ReadStudentResponse.FromString,
+                request_serializer=in_dot_student__pb2.ReadStudentRequest.SerializeToString,
+                response_deserializer=in_dot_student__pb2.ReadStudentResponse.FromString,
                 )
         self.UpdateStudent = channel.unary_unary(
                 '/student.Student/UpdateStudent',
-                request_serializer=in_dot_student_dot_student__pb2.UpdateStudentRequest.SerializeToString,
-                response_deserializer=in_dot_student_dot_student__pb2.UpdateStudentResponse.FromString,
+                request_serializer=in_dot_student__pb2.UpdateStudentRequest.SerializeToString,
+                response_deserializer=in_dot_student__pb2.UpdateStudentResponse.FromString,
                 )
         self.DeleteStudent = channel.unary_unary(
                 '/student.Student/DeleteStudent',
-                request_serializer=in_dot_student_dot_student__pb2.DeleteStudentRequest.SerializeToString,
-                response_deserializer=in_dot_student_dot_student__pb2.DeleteStudentResponse.FromString,
+                request_serializer=in_dot_student__pb2.DeleteStudentRequest.SerializeToString,
+                response_deserializer=in_dot_student__pb2.DeleteStudentResponse.FromString,
                 )
         self.ReadStudentList = channel.unary_unary(
                 '/student.Student/ReadStudentList',
-                request_serializer=in_dot_student_dot_student__pb2.ReadStudentListRequest.SerializeToString,
-                response_deserializer=in_dot_student_dot_student__pb2.ReadStudentListResponse.FromString,
+                request_serializer=in_dot_student__pb2.ReadStudentListRequest.SerializeToString,
+                response_deserializer=in_dot_student__pb2.ReadStudentListResponse.FromString,
                 )
 
 
@@ -79,28 +79,28 @@ def add_StudentServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateStudent': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateStudent,
-                    request_deserializer=in_dot_student_dot_student__pb2.CreateStudentRequest.FromString,
-                    response_serializer=in_dot_student_dot_student__pb2.CreateStudentResponse.SerializeToString,
+                    request_deserializer=in_dot_student__pb2.CreateStudentRequest.FromString,
+                    response_serializer=in_dot_student__pb2.CreateStudentResponse.SerializeToString,
             ),
             'ReadStudent': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadStudent,
-                    request_deserializer=in_dot_student_dot_student__pb2.ReadStudentRequest.FromString,
-                    response_serializer=in_dot_student_dot_student__pb2.ReadStudentResponse.SerializeToString,
+                    request_deserializer=in_dot_student__pb2.ReadStudentRequest.FromString,
+                    response_serializer=in_dot_student__pb2.ReadStudentResponse.SerializeToString,
             ),
             'UpdateStudent': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateStudent,
-                    request_deserializer=in_dot_student_dot_student__pb2.UpdateStudentRequest.FromString,
-                    response_serializer=in_dot_student_dot_student__pb2.UpdateStudentResponse.SerializeToString,
+                    request_deserializer=in_dot_student__pb2.UpdateStudentRequest.FromString,
+                    response_serializer=in_dot_student__pb2.UpdateStudentResponse.SerializeToString,
             ),
             'DeleteStudent': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteStudent,
-                    request_deserializer=in_dot_student_dot_student__pb2.DeleteStudentRequest.FromString,
-                    response_serializer=in_dot_student_dot_student__pb2.DeleteStudentResponse.SerializeToString,
+                    request_deserializer=in_dot_student__pb2.DeleteStudentRequest.FromString,
+                    response_serializer=in_dot_student__pb2.DeleteStudentResponse.SerializeToString,
             ),
             'ReadStudentList': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadStudentList,
-                    request_deserializer=in_dot_student_dot_student__pb2.ReadStudentListRequest.FromString,
-                    response_serializer=in_dot_student_dot_student__pb2.ReadStudentListResponse.SerializeToString,
+                    request_deserializer=in_dot_student__pb2.ReadStudentListRequest.FromString,
+                    response_serializer=in_dot_student__pb2.ReadStudentListResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -124,8 +124,8 @@ class Student(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/student.Student/CreateStudent',
-            in_dot_student_dot_student__pb2.CreateStudentRequest.SerializeToString,
-            in_dot_student_dot_student__pb2.CreateStudentResponse.FromString,
+            in_dot_student__pb2.CreateStudentRequest.SerializeToString,
+            in_dot_student__pb2.CreateStudentResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -141,8 +141,8 @@ class Student(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/student.Student/ReadStudent',
-            in_dot_student_dot_student__pb2.ReadStudentRequest.SerializeToString,
-            in_dot_student_dot_student__pb2.ReadStudentResponse.FromString,
+            in_dot_student__pb2.ReadStudentRequest.SerializeToString,
+            in_dot_student__pb2.ReadStudentResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -158,8 +158,8 @@ class Student(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/student.Student/UpdateStudent',
-            in_dot_student_dot_student__pb2.UpdateStudentRequest.SerializeToString,
-            in_dot_student_dot_student__pb2.UpdateStudentResponse.FromString,
+            in_dot_student__pb2.UpdateStudentRequest.SerializeToString,
+            in_dot_student__pb2.UpdateStudentResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -175,8 +175,8 @@ class Student(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/student.Student/DeleteStudent',
-            in_dot_student_dot_student__pb2.DeleteStudentRequest.SerializeToString,
-            in_dot_student_dot_student__pb2.DeleteStudentResponse.FromString,
+            in_dot_student__pb2.DeleteStudentRequest.SerializeToString,
+            in_dot_student__pb2.DeleteStudentResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -192,7 +192,7 @@ class Student(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/student.Student/ReadStudentList',
-            in_dot_student_dot_student__pb2.ReadStudentListRequest.SerializeToString,
-            in_dot_student_dot_student__pb2.ReadStudentListResponse.FromString,
+            in_dot_student__pb2.ReadStudentListRequest.SerializeToString,
+            in_dot_student__pb2.ReadStudentListResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
