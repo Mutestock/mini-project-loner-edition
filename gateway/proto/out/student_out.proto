@@ -1,7 +1,7 @@
 syntax = "proto3";
-package student;
+package student_out;
 
-service Student {
+service StudentOut {
   rpc CreateStudent(CreateStudentRequest) returns (CreateStudentResponse) {}
   rpc ReadStudent(ReadStudentRequest) returns (ReadStudentResponse) {}
   rpc UpdateStudent(UpdateStudentRequest) returns (UpdateStudentResponse) {}
@@ -18,13 +18,10 @@ message CreateStudentRequest {
 }
 
 message ReadStudentResponse {
-  int32 id = 1;
-  string first_name = 2;
-  string last_name = 3;
-  string phone_number = 4;
-  string email = 5;
-  string updated_at = 6;
-  string created_at = 7;
+  string first_name = 1;
+  string last_name = 2;
+  string phone_number = 3;
+  string email = 4;
 }
 
 message UpdateStudentRequest {
