@@ -62,6 +62,16 @@ services:
     networks:
       - app-network
 
+  grpc_proxy:
+    image: envoyproxy/envoy:v1.18-latest
+    container_name: grpc_proxy
+    ports:
+      - 10050:8080
+    volumes:
+      - ./proxy/envoy.yaml:/etc/envoy/envoy.yaml
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: "bridge"
