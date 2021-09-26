@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar/';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule }  from '@angular/material/button'
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table'
 import { TeachersComponent } from './teachers/teachers.component';
 import { StudentsComponent } from './students/students.component';
 import { GradesComponent } from './grades/grades.component'
@@ -24,7 +25,8 @@ import { GradesComponent } from './grades/grades.component'
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
