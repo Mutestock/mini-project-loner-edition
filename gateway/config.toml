@@ -1,0 +1,12 @@
+[server]
+host="localhost"
+port=10000
+
+[clients]
+
+[clients.rest]
+[clients.rest.mini-proj]
+[clients.soap]
+[clients.soap.mini-proj]
+[clients.grpc]
+[clients.grpc.mini-proj]
