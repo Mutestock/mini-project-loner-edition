@@ -58,7 +58,7 @@ services:
     build: ./frontend
     container_name: frontend
     ports:
-      - 80:80
+      - 33333:80
     networks:
       - app-network
 
