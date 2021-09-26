@@ -20,3 +20,11 @@
 <br>
 <br>
 <p>For instructions, see instructions.txt (Last requirement in assignment definition</p>
+
+#Ports
+- Postgres DB: 10010
+- REST service: 10020
+- gRPC service: 10030
+- SOAP service: 10040
+- Web Application: 80
+- Proxy: 10050
