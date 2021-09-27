@@ -1,6 +1,9 @@
 from server.grpc_server import serve
+import logging
+
 
 def main() -> None:
+    logging.basicConfig()
     serve()
 
 

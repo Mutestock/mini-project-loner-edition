@@ -6,14 +6,14 @@ port=10000
 
 [clients.rest]
 [clients.rest.mini-proj]
-host = "localhost"
-port = 10040
+host = "127.0.0.1"
+port = 10020
 
 
 [clients.soap]
 [clients.soap.mini-proj]
 host="localhost"
-port=10020
+port=10040
 
 
 [clients.grpc]
