@@ -7,9 +7,9 @@ import { config } from "./utils/config.ts";
 // https://deno.land/x/oak@v9.0.0
 
 let app = new oak.Application();
-app.use(router.routes());
+app.use(oakCors({ origin: true }));
 app.use(router.allowedMethods());
-app.use(oakCors({ origin: "*" }));
+app.use(router.routes());
 
 app.addEventListener("listen", ({ hostname, port, serverType }) => {
     console.log(
