@@ -13,6 +13,6 @@ COPY . .
 #RUN cargo install --path .
 RUN rustup component add rustfmt
 
-#RUN cargo b --verbose
+RUN cargo b
 
 CMD ["cargo","r","--bin","mini-proj-server"]
