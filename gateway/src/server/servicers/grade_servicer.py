@@ -10,7 +10,9 @@ class GradeServicer(grade_out_pb2_grpc.GradeOutServicer):
         return grade_out_pb2.CreateGradeResponse(rest_grade.create_grade(Grade.from_request(request)))
 
     def ReadGrade(self, request, context):
-        return grade_out_pb2.ReadGradeResponse(rest_grade.read_grade(request.id))
+        return grade_out_pb2.ReadGradeResponse(
+            name=rest_grade.read_grade(request.id)["name"]
+        )
 
     def UpdateGrade(self, request, context):
         return grade_out_pb2.UpdateGradeResponse(rest_grade.update_grade(request.id, Grade.from_request(request)))
