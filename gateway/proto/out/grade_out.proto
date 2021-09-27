@@ -4,7 +4,7 @@ package grade_out;
 service GradeOut {
   rpc CreateGrade(CreateGradeRequest) returns (CreateGradeResponse) {}
   rpc ReadGrade(ReadGradeRequest) returns (ReadGradeResponse) {}
-  rpc ReadGradeList(ReadListGradeRequest) returns (ReadGradeResponse) {}
+  rpc ReadGradeList(ReadGradeListRequest) returns (ReadGradeListResponse) {}
   rpc UpdateGrade(UpdateGradeRequest) returns (UpdateGradeResponse) {}
   rpc DeleteGrade(DeleteGradeRequest) returns (DeleteGradeResponse) {}
 }
@@ -31,6 +31,6 @@ message DeleteGradeRequest { int32 id = 1; }
 
 message DeleteGradeResponse { string msg = 1; }
 
-message ReadListGradeRequest {}
+message ReadGradeListRequest {}
 
-message ReadListGradeResponse { repeated ReadGradeResponse grades = 1; }
+message ReadGradeListResponse { repeated ReadGradeResponse grades = 1; }

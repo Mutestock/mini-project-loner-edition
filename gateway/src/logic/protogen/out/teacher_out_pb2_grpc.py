@@ -27,7 +27,7 @@ class TeacherOutStub(object):
         self.ReadTeacherList = channel.unary_unary(
                 '/teacher_out.TeacherOut/ReadTeacherList',
                 request_serializer=out_dot_teacher__out__pb2.ReadListTeacherRequest.SerializeToString,
-                response_deserializer=out_dot_teacher__out__pb2.ReadTeacherResponse.FromString,
+                response_deserializer=out_dot_teacher__out__pb2.ReadListTeacherResponse.FromString,
                 )
         self.UpdateTeacher = channel.unary_unary(
                 '/teacher_out.TeacherOut/UpdateTeacher',
@@ -90,7 +90,7 @@ def add_TeacherOutServicer_to_server(servicer, server):
             'ReadTeacherList': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadTeacherList,
                     request_deserializer=out_dot_teacher__out__pb2.ReadListTeacherRequest.FromString,
-                    response_serializer=out_dot_teacher__out__pb2.ReadTeacherResponse.SerializeToString,
+                    response_serializer=out_dot_teacher__out__pb2.ReadListTeacherResponse.SerializeToString,
             ),
             'UpdateTeacher': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateTeacher,
@@ -159,7 +159,7 @@ class TeacherOut(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/teacher_out.TeacherOut/ReadTeacherList',
             out_dot_teacher__out__pb2.ReadListTeacherRequest.SerializeToString,
-            out_dot_teacher__out__pb2.ReadTeacherResponse.FromString,
+            out_dot_teacher__out__pb2.ReadListTeacherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

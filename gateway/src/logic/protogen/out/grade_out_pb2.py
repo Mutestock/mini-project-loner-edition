@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x13out/grade_out.proto\x12\tgrade_out\"\"\n\x12\x43reateGradeRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\"\n\x13\x43reateGradeResponse\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x1e\n\x10ReadGradeRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"!\n\x11ReadGradeResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\"l\n\x12UpdateGradeRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x14\n\x0cphone_number\x18\x04 \x01(\t\x12\r\n\x05\x65mail\x18\x05 \x01(\t\"\"\n\x13UpdateGradeResponse\x12\x0b\n\x03msg\x18\x01 \x01(\t\" \n\x12\x44\x65leteGradeRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"\"\n\x13\x44\x65leteGradeResponse\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x16\n\x14ReadListGradeRequest\"E\n\x15ReadListGradeResponse\x12,\n\x06grades\x18\x01 \x03(\x0b\x32\x1c.grade_out.ReadGradeResponse2\x96\x03\n\x08GradeOut\x12N\n\x0b\x43reateGrade\x12\x1d.grade_out.CreateGradeRequest\x1a\x1e.grade_out.CreateGradeResponse\"\x00\x12H\n\tReadGrade\x12\x1b.grade_out.ReadGradeRequest\x1a\x1c.grade_out.ReadGradeResponse\"\x00\x12P\n\rReadGradeList\x12\x1f.grade_out.ReadListGradeRequest\x1a\x1c.grade_out.ReadGradeResponse\"\x00\x12N\n\x0bUpdateGrade\x12\x1d.grade_out.UpdateGradeRequest\x1a\x1e.grade_out.UpdateGradeResponse\"\x00\x12N\n\x0b\x44\x65leteGrade\x12\x1d.grade_out.DeleteGradeRequest\x1a\x1e.grade_out.DeleteGradeResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x13out/grade_out.proto\x12\tgrade_out\"\"\n\x12\x43reateGradeRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\"\n\x13\x43reateGradeResponse\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x1e\n\x10ReadGradeRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"!\n\x11ReadGradeResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\"l\n\x12UpdateGradeRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nfirst_name\x18\x02 \x01(\t\x12\x11\n\tlast_name\x18\x03 \x01(\t\x12\x14\n\x0cphone_number\x18\x04 \x01(\t\x12\r\n\x05\x65mail\x18\x05 \x01(\t\"\"\n\x13UpdateGradeResponse\x12\x0b\n\x03msg\x18\x01 \x01(\t\" \n\x12\x44\x65leteGradeRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"\"\n\x13\x44\x65leteGradeResponse\x12\x0b\n\x03msg\x18\x01 \x01(\t\"\x16\n\x14ReadGradeListRequest\"E\n\x15ReadGradeListResponse\x12,\n\x06grades\x18\x01 \x03(\x0b\x32\x1c.grade_out.ReadGradeResponse2\x9a\x03\n\x08GradeOut\x12N\n\x0b\x43reateGrade\x12\x1d.grade_out.CreateGradeRequest\x1a\x1e.grade_out.CreateGradeResponse\"\x00\x12H\n\tReadGrade\x12\x1b.grade_out.ReadGradeRequest\x1a\x1c.grade_out.ReadGradeResponse\"\x00\x12T\n\rReadGradeList\x12\x1f.grade_out.ReadGradeListRequest\x1a .grade_out.ReadGradeListResponse\"\x00\x12N\n\x0bUpdateGrade\x12\x1d.grade_out.UpdateGradeRequest\x1a\x1e.grade_out.UpdateGradeResponse\"\x00\x12N\n\x0b\x44\x65leteGrade\x12\x1d.grade_out.DeleteGradeRequest\x1a\x1e.grade_out.DeleteGradeResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -309,9 +309,9 @@ _DELETEGRADERESPONSE = _descriptor.Descriptor(
 )
 
 
-_READLISTGRADEREQUEST = _descriptor.Descriptor(
-  name='ReadListGradeRequest',
-  full_name='grade_out.ReadListGradeRequest',
+_READGRADELISTREQUEST = _descriptor.Descriptor(
+  name='ReadGradeListRequest',
+  full_name='grade_out.ReadGradeListRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -334,16 +334,16 @@ _READLISTGRADEREQUEST = _descriptor.Descriptor(
 )
 
 
-_READLISTGRADERESPONSE = _descriptor.Descriptor(
-  name='ReadListGradeResponse',
-  full_name='grade_out.ReadListGradeResponse',
+_READGRADELISTRESPONSE = _descriptor.Descriptor(
+  name='ReadGradeListResponse',
+  full_name='grade_out.ReadGradeListResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='grades', full_name='grade_out.ReadListGradeResponse.grades', index=0,
+      name='grades', full_name='grade_out.ReadGradeListResponse.grades', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -365,7 +365,7 @@ _READLISTGRADERESPONSE = _descriptor.Descriptor(
   serialized_end=482,
 )
 
-_READLISTGRADERESPONSE.fields_by_name['grades'].message_type = _READGRADERESPONSE
+_READGRADELISTRESPONSE.fields_by_name['grades'].message_type = _READGRADERESPONSE
 DESCRIPTOR.message_types_by_name['CreateGradeRequest'] = _CREATEGRADEREQUEST
 DESCRIPTOR.message_types_by_name['CreateGradeResponse'] = _CREATEGRADERESPONSE
 DESCRIPTOR.message_types_by_name['ReadGradeRequest'] = _READGRADEREQUEST
@@ -374,8 +374,8 @@ DESCRIPTOR.message_types_by_name['UpdateGradeRequest'] = _UPDATEGRADEREQUEST
 DESCRIPTOR.message_types_by_name['UpdateGradeResponse'] = _UPDATEGRADERESPONSE
 DESCRIPTOR.message_types_by_name['DeleteGradeRequest'] = _DELETEGRADEREQUEST
 DESCRIPTOR.message_types_by_name['DeleteGradeResponse'] = _DELETEGRADERESPONSE
-DESCRIPTOR.message_types_by_name['ReadListGradeRequest'] = _READLISTGRADEREQUEST
-DESCRIPTOR.message_types_by_name['ReadListGradeResponse'] = _READLISTGRADERESPONSE
+DESCRIPTOR.message_types_by_name['ReadGradeListRequest'] = _READGRADELISTREQUEST
+DESCRIPTOR.message_types_by_name['ReadGradeListResponse'] = _READGRADELISTRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 CreateGradeRequest = _reflection.GeneratedProtocolMessageType('CreateGradeRequest', (_message.Message,), {
@@ -434,19 +434,19 @@ DeleteGradeResponse = _reflection.GeneratedProtocolMessageType('DeleteGradeRespo
   })
 _sym_db.RegisterMessage(DeleteGradeResponse)
 
-ReadListGradeRequest = _reflection.GeneratedProtocolMessageType('ReadListGradeRequest', (_message.Message,), {
-  'DESCRIPTOR' : _READLISTGRADEREQUEST,
+ReadGradeListRequest = _reflection.GeneratedProtocolMessageType('ReadGradeListRequest', (_message.Message,), {
+  'DESCRIPTOR' : _READGRADELISTREQUEST,
   '__module__' : 'out.grade_out_pb2'
-  # @@protoc_insertion_point(class_scope:grade_out.ReadListGradeRequest)
+  # @@protoc_insertion_point(class_scope:grade_out.ReadGradeListRequest)
   })
-_sym_db.RegisterMessage(ReadListGradeRequest)
+_sym_db.RegisterMessage(ReadGradeListRequest)
 
-ReadListGradeResponse = _reflection.GeneratedProtocolMessageType('ReadListGradeResponse', (_message.Message,), {
-  'DESCRIPTOR' : _READLISTGRADERESPONSE,
+ReadGradeListResponse = _reflection.GeneratedProtocolMessageType('ReadGradeListResponse', (_message.Message,), {
+  'DESCRIPTOR' : _READGRADELISTRESPONSE,
   '__module__' : 'out.grade_out_pb2'
-  # @@protoc_insertion_point(class_scope:grade_out.ReadListGradeResponse)
+  # @@protoc_insertion_point(class_scope:grade_out.ReadGradeListResponse)
   })
-_sym_db.RegisterMessage(ReadListGradeResponse)
+_sym_db.RegisterMessage(ReadGradeListResponse)
 
 
 
@@ -458,7 +458,7 @@ _GRADEOUT = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=485,
-  serialized_end=891,
+  serialized_end=895,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateGrade',
@@ -485,8 +485,8 @@ _GRADEOUT = _descriptor.ServiceDescriptor(
     full_name='grade_out.GradeOut.ReadGradeList',
     index=2,
     containing_service=None,
-    input_type=_READLISTGRADEREQUEST,
-    output_type=_READGRADERESPONSE,
+    input_type=_READGRADELISTREQUEST,
+    output_type=_READGRADELISTRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

@@ -4,7 +4,7 @@ package teacher_out;
 service TeacherOut {
   rpc CreateTeacher(CreateTeacherRequest) returns (CreateTeacherResponse) {}
   rpc ReadTeacher(ReadTeacherRequest) returns (ReadTeacherResponse) {}
-  rpc ReadTeacherList(ReadListTeacherRequest) returns (ReadTeacherResponse) {}
+  rpc ReadTeacherList(ReadListTeacherRequest) returns (ReadListTeacherResponse) {}
   rpc UpdateTeacher(UpdateTeacherRequest) returns (UpdateTeacherResponse) {}
   rpc DeleteTeacher(DeleteTeacherRequest) returns (DeleteTeacherResponse) {}
 }

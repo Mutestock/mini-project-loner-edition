@@ -1,3 +1,6 @@
+from logic.protogen.out.teacher_out_pb2 import ReadListTeacherResponse, ReadTeacherResponse
+
+
 class Teacher():
     def __init__(self, first_name, last_name, phone_number, email) -> None:
         self.first_name = first_name
@@ -5,4 +8,19 @@ class Teacher():
         self.phone_number = phone_number
         self.email = email
 
-        
+    @staticmethod
+    def to_grpc_read_response(teacher) -> ReadTeacherResponse:
+        return ReadTeacherResponse(
+            first_name=teacher.first_name,
+            last_name=teacher.last_name,
+            phone_number=teacher.phone_number,
+            email=teacher.email
+        )
+
+    @staticmethod
+    def to_grpc_read_list_response(teacher_list) -> ReadListTeacherResponse:
+        read_teacher_list_response = []
+        for teacher in teacher_list:
+            read_teacher_list_response.append(
+                Teacher.to_grpc_read_response(teacher))
+        return read_teacher_list_response
