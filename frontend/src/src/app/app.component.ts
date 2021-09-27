@@ -12,5 +12,6 @@ export class AppComponent {
   constructor(){
     console.log('gRPC url: ' + environment.grpcUrl);
     console.log('Teacher REST url: ' + environment.teacherRestUrl);
+    console.log('Grades url: ' + environment.gradesUrl);
   }
 }
