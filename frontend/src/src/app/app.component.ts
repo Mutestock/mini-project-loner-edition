@@ -10,6 +10,7 @@ export class AppComponent {
   title: string = 'Frontend for school integration system';
 
   constructor(){
-    console.log(environment.grpcUrl);
+    console.log('gRPC url: ' + environment.grpcUrl);
+    console.log('Teacher REST url: ' + environment.teacherRestUrl);
   }
 }
