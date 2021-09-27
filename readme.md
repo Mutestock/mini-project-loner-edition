@@ -6,7 +6,7 @@
 
 
 - REST: Typescript (deno) 
-- SOAP: C# 
+- SOAP: C# (ASP.NET Core)
 - gRPC: Rust (tonic) 
 - Migration: Python
 - Frontend: Typescript (Angular)
@@ -29,7 +29,7 @@ Be advised that pulling the containers and compiling their contents will take so
 The solution is at the time of writing this file deployed at:
 
 ## front:
-  http://159.65.54.148:10050/
+  http://159.65.54.148/
 
 
 ## backend:
@@ -75,7 +75,7 @@ There are multiple reasons why we've decided to solve the assignment like this
 4. Creating the services like this allows us to easily reuse and expand them for future projects.
 
 ## Envoy proxy
-Envoy is required because our frontend is communicating directly with a gRPC server. There are some message transportation errors since gRPC uses http/2
+Envoy is required because our frontend is communicating directly with a gRPC server over gRPC-web. There are some message transportation errors since gRPC-web [uses http/2](https://grpc.io/blog/state-of-grpc-web/)
 
 
 # Ports
@@ -91,6 +91,6 @@ Envoy is required because our frontend is communicating directly with a gRPC ser
 Note that:
 - Rest is responsibile for Grades and relations
 - gRPC is responsible for Student
-- SOAP is responsible for teachers
+- SOAP is responsible for Teachers
 
 ![alt text](/resources/er_diagram.png "er_diagram")
