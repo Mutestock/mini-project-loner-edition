@@ -53,6 +53,14 @@ services:
       - 10040:5000
     networks:
       - app-network
+  
+  teacher_rest:
+    build: ./teacher_rest
+    container_name: rest_teacher_dev
+    ports:
+      - 10060:5000
+    networks:
+      - app-network
 
   frontend:
     build: ./frontend
