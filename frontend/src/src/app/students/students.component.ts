@@ -8,7 +8,7 @@ import { StudentClient } from '../../proto/student.pbsc'
   styleUrls: ['./students.component.scss']
 })
 export class StudentsComponent implements OnInit {
-  columnsToDisplay: string[] = ['id', 'first_name', 'last_name', 'email']
+  columnsToDisplay: string[] = ['id', 'firstName', 'lastName', 'email']
   dataSource: ReadStudentResponse[] = [];
 
 
