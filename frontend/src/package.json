@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration=development",
-    "build": "ng build --configuration=production",
+    "build:prod": "ng build --configuration=production",
+    "build:staging": "ng build --configuration=production,staging",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "proto:generate": "protoc --plugin=protoc-gen-ng=$(which protoc-gen-ng) --ng_out=./src/proto -I ../../grpc/proto/student $(find ../../grpc/proto/student -iname \"*.proto\")",
