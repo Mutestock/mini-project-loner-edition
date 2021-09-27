@@ -8,6 +8,15 @@ class Teacher():
         self.phone_number = phone_number
         self.email = email
 
+    @classmethod
+    def from_request(request):
+        return Teacher(
+            first_name=request.first_name,
+            last_name=request.last_name,
+            phone_number=request.phone_number,
+            email=request.email
+        )
+
     @staticmethod
     def to_grpc_read_response(teacher) -> ReadTeacherResponse:
         return ReadTeacherResponse(

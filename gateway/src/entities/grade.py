@@ -6,6 +6,12 @@ class Grade():
         self.name = name
 
     @staticmethod
+    def from_request(request):
+        return Grade(
+            name=request.name,
+        )
+
+    @staticmethod
     def to_grpc_read_response(grade) -> ReadGradeResponse:
         return ReadGradeResponse(
             name=grade.name,

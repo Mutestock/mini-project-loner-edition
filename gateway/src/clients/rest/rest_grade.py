@@ -1,13 +1,15 @@
 import requests
 from utils.config import CONFIG
+import json as JSON
 
 _CLIENT_CONFIG: str = CONFIG["clients"]["rest"]["mini-proj"]
 _PREFIX: str = f"http://{_CLIENT_CONFIG['host']}:{_CLIENT_CONFIG['port']}/grade"
+_HEADERS = {"Content-Type":"application/json"}
 
 
 def create_grade(grade):
     try:
-        return requests.post(_PREFIX, data=grade).json()
+        return requests.post(_PREFIX, data=JSON.dumps(grade.__dict__), headers=_HEADERS).text
     except Exception as e:
         print(e)
 

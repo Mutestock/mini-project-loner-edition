@@ -7,7 +7,7 @@ from entities.grade import Grade
 class GradeServicer(grade_out_pb2_grpc.GradeOutServicer):
 
     def CreateGrade(self, request, context):
-        return grade_out_pb2.CreateGradeResponse(rest_grade.create_grade(Grade.from_request(request)))
+        return grade_out_pb2.CreateGradeResponse(msg=rest_grade.create_grade(Grade.from_request(request)))
 
     def ReadGrade(self, request, context):
         return grade_out_pb2.ReadGradeResponse(
