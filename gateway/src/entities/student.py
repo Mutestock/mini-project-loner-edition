@@ -1,4 +1,4 @@
-from logic.protogen.out import student_out_pb2
+from logic.protogen.out.student_out_pb2 import ReadStudentListResponse, ReadStudentResponse
 
 
 class Student():
@@ -7,6 +7,15 @@ class Student():
         self.last_name = last_name
         self.phone_number = phone_number
         self.email = email
+        
+    @classmethod
+    def from_request(request) -> Student:
+        return Student(
+            first_name=request.first_name,
+            last_name=request.last_name,
+            phone_number=request.phone_number,
+            email=request.email
+        )
 
     @staticmethod
     def to_grpc_read_response(student) -> ReadStudentResponse:

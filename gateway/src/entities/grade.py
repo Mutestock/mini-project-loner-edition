@@ -1,5 +1,4 @@
-from os import stat
-from logic.protogen.out import grade_out_pb2
+from logic.protogen.out.grade_out_pb2 import ReadGradeListResponse, ReadGradeResponse
 
 
 class Grade():

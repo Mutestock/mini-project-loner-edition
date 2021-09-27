@@ -1,28 +1,30 @@
-from logic.protogen.in import student_pb2_grpc
+from logic.protogen. in import student_pb2_grpc
 from utils.config import CONFIG
 
-_CLIENT_CONFIG = CONFIG["clients"]["rest"]["mini-proj"]
+_CLIENT_CONFIG: str = CONFIG["clients"]["rest"]["mini-proj"]
+
 
 def _create_stub():
-    channel = grpc.insecure_channel(f"{_CLIENT_CONFIG['host']}:{_CLIENT_CONFIG['port']}")
+    channel = grpc.insecure_channel(
+        f"{_CLIENT_CONFIG['host']}:{_CLIENT_CONFIG['port']}")
     return student_pb2_grpc.StudentStub(channel)
 
+
 def create_student(student):
-    response = _create_stub().CreateStudentRequest(student)
-    return response
+    return _create_stub().CreateStudentRequest(student)
+
 
 def read_student(id):
-    response = _create_stub().ReadStudentRequest(id)
-    return response
+    return _create_stub().ReadStudentRequest(id)
+
 
 def update_student(id, student):
-    response = _create_stub().UpdateStudentRequest(id, student)
-    return response
+    return _create_stub().UpdateStudentRequest(id, student)
+
 
 def delete_student(id):
-    response = _create_stub().DeleteStudentRequest(id)
-    return response
+    return _create_stub().DeleteStudentRequest(id)
+
 
 def read_student_list():
-    response = _create_stub().ReadStudentListRequest()
-    return response
+    return _create_stub().ReadStudentListRequest()
