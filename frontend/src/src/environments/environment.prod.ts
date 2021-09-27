@@ -1,4 +1,7 @@
+const serverIp: string = '159.65.54.148';
+
 export const environment = {
   production: true,
-  grpcUrl: "http://159.65.54.148:10050"
+  grpcUrl: `http://${serverIp}:10050`,
+  teacherRestUrl: `http://${serverIp}:10060`
 };

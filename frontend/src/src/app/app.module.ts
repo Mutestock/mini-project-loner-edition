@@ -14,6 +14,7 @@ import { GradesComponent } from './grades/grades.component'
 import { GrpcCoreModule } from '@ngx-grpc/core';
 import { GrpcWebClientModule } from '@ngx-grpc/grpc-web-client';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { environment } from 'src/environments/environment';
     GrpcCoreModule.forRoot(),
     GrpcWebClientModule.forRoot({
       settings: { host: environment.grpcUrl }
-    })
+    }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
