@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,16 +28,21 @@ namespace TeacherRestService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ITeacherService, TeacherServiceClient>(serviceProvider 
+            services.AddScoped<ITeacherService, TeacherServiceClient>(serviceProvider
                 => new TeacherServiceClient(TeacherServiceClient.EndpointConfiguration.BasicHttpBinding, Configuration.GetValue<string>("SoapUrl")));
+
+            services.AddCors(options 
+                => options.AddDefaultPolicy(builder
+                    => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "src", Version = "v1" });
             });
-
-            services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyOrigin()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
