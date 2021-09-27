@@ -1,4 +1,4 @@
-from logic.protogen.out.teacher_out_pb2 import ReadListTeacherResponse, ReadTeacherResponse
+from logic.protogen.outgoing.teacher_out_pb2 import ReadListTeacherResponse, ReadTeacherResponse
 
 
 class Teacher():

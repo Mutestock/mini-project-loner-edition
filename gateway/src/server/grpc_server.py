@@ -1,7 +1,7 @@
 from server.servicers.grade_servicer import GradeServicer
 from server.servicers.student_servicer import StudentServicer
 from server.servicers.teacher_servicer import TeacherServicer
-from logic.out import grade_out_pb2_grpc, student_out_pb2_grpc, teacher_out_pb2_grpc
+from logic.outgoing import grade_out_pb2_grpc, student_out_pb2_grpc, teacher_out_pb2_grpc
 import grpc
 from utils.config import CONFIG
 

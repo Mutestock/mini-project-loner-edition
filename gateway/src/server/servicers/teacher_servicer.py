@@ -1,5 +1,5 @@
-from logic.protogen.out import teacher_out_pb2_grpc
-from logic.protogen.out import teacher_out_pb2
+from logic.protogen.outgoing import teacher_out_pb2_grpc
+from logic.protogen.outgoing import teacher_out_pb2
 from clients.soap import soap_teacher
 from entities.teacher import Teacher
 

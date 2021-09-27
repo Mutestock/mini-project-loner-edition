@@ -1,5 +1,5 @@
-from logic.protogen.out import grade_out_pb2_grpc
-from logic.protogen.out import grade_out_pb2
+from logic.protogen.outgoing import grade_out_pb2_grpc
+from logic.protogen.outgoing import grade_out_pb2
 from clients.rest import rest_grade
 from entities.grade import Grade
 

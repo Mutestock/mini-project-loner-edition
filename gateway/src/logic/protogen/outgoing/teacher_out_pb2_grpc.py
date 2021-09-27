@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from out import teacher_out_pb2 as out_dot_teacher__out__pb2
+from logic.protogen.outgoing import teacher_out_pb2 as outgoing_dot_teacher__out__pb2
 
 
 class TeacherOutStub(object):
@@ -16,28 +16,28 @@ class TeacherOutStub(object):
         """
         self.CreateTeacher = channel.unary_unary(
                 '/teacher_out.TeacherOut/CreateTeacher',
-                request_serializer=out_dot_teacher__out__pb2.CreateTeacherRequest.SerializeToString,
-                response_deserializer=out_dot_teacher__out__pb2.CreateTeacherResponse.FromString,
+                request_serializer=outgoing_dot_teacher__out__pb2.CreateTeacherRequest.SerializeToString,
+                response_deserializer=outgoing_dot_teacher__out__pb2.CreateTeacherResponse.FromString,
                 )
         self.ReadTeacher = channel.unary_unary(
                 '/teacher_out.TeacherOut/ReadTeacher',
-                request_serializer=out_dot_teacher__out__pb2.ReadTeacherRequest.SerializeToString,
-                response_deserializer=out_dot_teacher__out__pb2.ReadTeacherResponse.FromString,
+                request_serializer=outgoing_dot_teacher__out__pb2.ReadTeacherRequest.SerializeToString,
+                response_deserializer=outgoing_dot_teacher__out__pb2.ReadTeacherResponse.FromString,
                 )
         self.ReadTeacherList = channel.unary_unary(
                 '/teacher_out.TeacherOut/ReadTeacherList',
-                request_serializer=out_dot_teacher__out__pb2.ReadListTeacherRequest.SerializeToString,
-                response_deserializer=out_dot_teacher__out__pb2.ReadListTeacherResponse.FromString,
+                request_serializer=outgoing_dot_teacher__out__pb2.ReadListTeacherRequest.SerializeToString,
+                response_deserializer=outgoing_dot_teacher__out__pb2.ReadListTeacherResponse.FromString,
                 )
         self.UpdateTeacher = channel.unary_unary(
                 '/teacher_out.TeacherOut/UpdateTeacher',
-                request_serializer=out_dot_teacher__out__pb2.UpdateTeacherRequest.SerializeToString,
-                response_deserializer=out_dot_teacher__out__pb2.UpdateTeacherResponse.FromString,
+                request_serializer=outgoing_dot_teacher__out__pb2.UpdateTeacherRequest.SerializeToString,
+                response_deserializer=outgoing_dot_teacher__out__pb2.UpdateTeacherResponse.FromString,
                 )
         self.DeleteTeacher = channel.unary_unary(
                 '/teacher_out.TeacherOut/DeleteTeacher',
-                request_serializer=out_dot_teacher__out__pb2.DeleteTeacherRequest.SerializeToString,
-                response_deserializer=out_dot_teacher__out__pb2.DeleteTeacherResponse.FromString,
+                request_serializer=outgoing_dot_teacher__out__pb2.DeleteTeacherRequest.SerializeToString,
+                response_deserializer=outgoing_dot_teacher__out__pb2.DeleteTeacherResponse.FromString,
                 )
 
 
@@ -79,28 +79,28 @@ def add_TeacherOutServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateTeacher': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateTeacher,
-                    request_deserializer=out_dot_teacher__out__pb2.CreateTeacherRequest.FromString,
-                    response_serializer=out_dot_teacher__out__pb2.CreateTeacherResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_teacher__out__pb2.CreateTeacherRequest.FromString,
+                    response_serializer=outgoing_dot_teacher__out__pb2.CreateTeacherResponse.SerializeToString,
             ),
             'ReadTeacher': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadTeacher,
-                    request_deserializer=out_dot_teacher__out__pb2.ReadTeacherRequest.FromString,
-                    response_serializer=out_dot_teacher__out__pb2.ReadTeacherResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_teacher__out__pb2.ReadTeacherRequest.FromString,
+                    response_serializer=outgoing_dot_teacher__out__pb2.ReadTeacherResponse.SerializeToString,
             ),
             'ReadTeacherList': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadTeacherList,
-                    request_deserializer=out_dot_teacher__out__pb2.ReadListTeacherRequest.FromString,
-                    response_serializer=out_dot_teacher__out__pb2.ReadListTeacherResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_teacher__out__pb2.ReadListTeacherRequest.FromString,
+                    response_serializer=outgoing_dot_teacher__out__pb2.ReadListTeacherResponse.SerializeToString,
             ),
             'UpdateTeacher': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateTeacher,
-                    request_deserializer=out_dot_teacher__out__pb2.UpdateTeacherRequest.FromString,
-                    response_serializer=out_dot_teacher__out__pb2.UpdateTeacherResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_teacher__out__pb2.UpdateTeacherRequest.FromString,
+                    response_serializer=outgoing_dot_teacher__out__pb2.UpdateTeacherResponse.SerializeToString,
             ),
             'DeleteTeacher': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteTeacher,
-                    request_deserializer=out_dot_teacher__out__pb2.DeleteTeacherRequest.FromString,
-                    response_serializer=out_dot_teacher__out__pb2.DeleteTeacherResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_teacher__out__pb2.DeleteTeacherRequest.FromString,
+                    response_serializer=outgoing_dot_teacher__out__pb2.DeleteTeacherResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -124,8 +124,8 @@ class TeacherOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/teacher_out.TeacherOut/CreateTeacher',
-            out_dot_teacher__out__pb2.CreateTeacherRequest.SerializeToString,
-            out_dot_teacher__out__pb2.CreateTeacherResponse.FromString,
+            outgoing_dot_teacher__out__pb2.CreateTeacherRequest.SerializeToString,
+            outgoing_dot_teacher__out__pb2.CreateTeacherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -141,8 +141,8 @@ class TeacherOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/teacher_out.TeacherOut/ReadTeacher',
-            out_dot_teacher__out__pb2.ReadTeacherRequest.SerializeToString,
-            out_dot_teacher__out__pb2.ReadTeacherResponse.FromString,
+            outgoing_dot_teacher__out__pb2.ReadTeacherRequest.SerializeToString,
+            outgoing_dot_teacher__out__pb2.ReadTeacherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -158,8 +158,8 @@ class TeacherOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/teacher_out.TeacherOut/ReadTeacherList',
-            out_dot_teacher__out__pb2.ReadListTeacherRequest.SerializeToString,
-            out_dot_teacher__out__pb2.ReadListTeacherResponse.FromString,
+            outgoing_dot_teacher__out__pb2.ReadListTeacherRequest.SerializeToString,
+            outgoing_dot_teacher__out__pb2.ReadListTeacherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -175,8 +175,8 @@ class TeacherOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/teacher_out.TeacherOut/UpdateTeacher',
-            out_dot_teacher__out__pb2.UpdateTeacherRequest.SerializeToString,
-            out_dot_teacher__out__pb2.UpdateTeacherResponse.FromString,
+            outgoing_dot_teacher__out__pb2.UpdateTeacherRequest.SerializeToString,
+            outgoing_dot_teacher__out__pb2.UpdateTeacherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -192,7 +192,7 @@ class TeacherOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/teacher_out.TeacherOut/DeleteTeacher',
-            out_dot_teacher__out__pb2.DeleteTeacherRequest.SerializeToString,
-            out_dot_teacher__out__pb2.DeleteTeacherResponse.FromString,
+            outgoing_dot_teacher__out__pb2.DeleteTeacherRequest.SerializeToString,
+            outgoing_dot_teacher__out__pb2.DeleteTeacherResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

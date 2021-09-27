@@ -1,4 +1,4 @@
-from logic.protogen. in import student_pb2_grpc
+from logic.protogen.incoming import student_pb2_grpc
 from utils.config import CONFIG
 
 _CLIENT_CONFIG: str = CONFIG["clients"]["rest"]["mini-proj"]

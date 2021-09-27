@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from out import grade_out_pb2 as out_dot_grade__out__pb2
+from logic.protogen.outgoing import grade_out_pb2 as outgoing_dot_grade__out__pb2
 
 
 class GradeOutStub(object):
@@ -16,28 +16,28 @@ class GradeOutStub(object):
         """
         self.CreateGrade = channel.unary_unary(
                 '/grade_out.GradeOut/CreateGrade',
-                request_serializer=out_dot_grade__out__pb2.CreateGradeRequest.SerializeToString,
-                response_deserializer=out_dot_grade__out__pb2.CreateGradeResponse.FromString,
+                request_serializer=outgoing_dot_grade__out__pb2.CreateGradeRequest.SerializeToString,
+                response_deserializer=outgoing_dot_grade__out__pb2.CreateGradeResponse.FromString,
                 )
         self.ReadGrade = channel.unary_unary(
                 '/grade_out.GradeOut/ReadGrade',
-                request_serializer=out_dot_grade__out__pb2.ReadGradeRequest.SerializeToString,
-                response_deserializer=out_dot_grade__out__pb2.ReadGradeResponse.FromString,
+                request_serializer=outgoing_dot_grade__out__pb2.ReadGradeRequest.SerializeToString,
+                response_deserializer=outgoing_dot_grade__out__pb2.ReadGradeResponse.FromString,
                 )
         self.ReadGradeList = channel.unary_unary(
                 '/grade_out.GradeOut/ReadGradeList',
-                request_serializer=out_dot_grade__out__pb2.ReadGradeListRequest.SerializeToString,
-                response_deserializer=out_dot_grade__out__pb2.ReadGradeListResponse.FromString,
+                request_serializer=outgoing_dot_grade__out__pb2.ReadGradeListRequest.SerializeToString,
+                response_deserializer=outgoing_dot_grade__out__pb2.ReadGradeListResponse.FromString,
                 )
         self.UpdateGrade = channel.unary_unary(
                 '/grade_out.GradeOut/UpdateGrade',
-                request_serializer=out_dot_grade__out__pb2.UpdateGradeRequest.SerializeToString,
-                response_deserializer=out_dot_grade__out__pb2.UpdateGradeResponse.FromString,
+                request_serializer=outgoing_dot_grade__out__pb2.UpdateGradeRequest.SerializeToString,
+                response_deserializer=outgoing_dot_grade__out__pb2.UpdateGradeResponse.FromString,
                 )
         self.DeleteGrade = channel.unary_unary(
                 '/grade_out.GradeOut/DeleteGrade',
-                request_serializer=out_dot_grade__out__pb2.DeleteGradeRequest.SerializeToString,
-                response_deserializer=out_dot_grade__out__pb2.DeleteGradeResponse.FromString,
+                request_serializer=outgoing_dot_grade__out__pb2.DeleteGradeRequest.SerializeToString,
+                response_deserializer=outgoing_dot_grade__out__pb2.DeleteGradeResponse.FromString,
                 )
 
 
@@ -79,28 +79,28 @@ def add_GradeOutServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreateGrade': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateGrade,
-                    request_deserializer=out_dot_grade__out__pb2.CreateGradeRequest.FromString,
-                    response_serializer=out_dot_grade__out__pb2.CreateGradeResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_grade__out__pb2.CreateGradeRequest.FromString,
+                    response_serializer=outgoing_dot_grade__out__pb2.CreateGradeResponse.SerializeToString,
             ),
             'ReadGrade': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadGrade,
-                    request_deserializer=out_dot_grade__out__pb2.ReadGradeRequest.FromString,
-                    response_serializer=out_dot_grade__out__pb2.ReadGradeResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_grade__out__pb2.ReadGradeRequest.FromString,
+                    response_serializer=outgoing_dot_grade__out__pb2.ReadGradeResponse.SerializeToString,
             ),
             'ReadGradeList': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadGradeList,
-                    request_deserializer=out_dot_grade__out__pb2.ReadGradeListRequest.FromString,
-                    response_serializer=out_dot_grade__out__pb2.ReadGradeListResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_grade__out__pb2.ReadGradeListRequest.FromString,
+                    response_serializer=outgoing_dot_grade__out__pb2.ReadGradeListResponse.SerializeToString,
             ),
             'UpdateGrade': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateGrade,
-                    request_deserializer=out_dot_grade__out__pb2.UpdateGradeRequest.FromString,
-                    response_serializer=out_dot_grade__out__pb2.UpdateGradeResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_grade__out__pb2.UpdateGradeRequest.FromString,
+                    response_serializer=outgoing_dot_grade__out__pb2.UpdateGradeResponse.SerializeToString,
             ),
             'DeleteGrade': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteGrade,
-                    request_deserializer=out_dot_grade__out__pb2.DeleteGradeRequest.FromString,
-                    response_serializer=out_dot_grade__out__pb2.DeleteGradeResponse.SerializeToString,
+                    request_deserializer=outgoing_dot_grade__out__pb2.DeleteGradeRequest.FromString,
+                    response_serializer=outgoing_dot_grade__out__pb2.DeleteGradeResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -124,8 +124,8 @@ class GradeOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/grade_out.GradeOut/CreateGrade',
-            out_dot_grade__out__pb2.CreateGradeRequest.SerializeToString,
-            out_dot_grade__out__pb2.CreateGradeResponse.FromString,
+            outgoing_dot_grade__out__pb2.CreateGradeRequest.SerializeToString,
+            outgoing_dot_grade__out__pb2.CreateGradeResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -141,8 +141,8 @@ class GradeOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/grade_out.GradeOut/ReadGrade',
-            out_dot_grade__out__pb2.ReadGradeRequest.SerializeToString,
-            out_dot_grade__out__pb2.ReadGradeResponse.FromString,
+            outgoing_dot_grade__out__pb2.ReadGradeRequest.SerializeToString,
+            outgoing_dot_grade__out__pb2.ReadGradeResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -158,8 +158,8 @@ class GradeOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/grade_out.GradeOut/ReadGradeList',
-            out_dot_grade__out__pb2.ReadGradeListRequest.SerializeToString,
-            out_dot_grade__out__pb2.ReadGradeListResponse.FromString,
+            outgoing_dot_grade__out__pb2.ReadGradeListRequest.SerializeToString,
+            outgoing_dot_grade__out__pb2.ReadGradeListResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -175,8 +175,8 @@ class GradeOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/grade_out.GradeOut/UpdateGrade',
-            out_dot_grade__out__pb2.UpdateGradeRequest.SerializeToString,
-            out_dot_grade__out__pb2.UpdateGradeResponse.FromString,
+            outgoing_dot_grade__out__pb2.UpdateGradeRequest.SerializeToString,
+            outgoing_dot_grade__out__pb2.UpdateGradeResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -192,7 +192,7 @@ class GradeOut(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/grade_out.GradeOut/DeleteGrade',
-            out_dot_grade__out__pb2.DeleteGradeRequest.SerializeToString,
-            out_dot_grade__out__pb2.DeleteGradeResponse.FromString,
+            outgoing_dot_grade__out__pb2.DeleteGradeRequest.SerializeToString,
+            outgoing_dot_grade__out__pb2.DeleteGradeResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

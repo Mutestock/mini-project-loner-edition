@@ -1,5 +1,5 @@
-from logic.protogen.out import student_out_pb2_grpc
-from logic.protogen.out import student_out_pb2
+from logic.protogen.outgoing import student_out_pb2_grpc
+from logic.protogen.outgoing import student_out_pb2
 from clients.grpc import grpc_student
 from entities.student import Student
 

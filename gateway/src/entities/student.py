@@ -1,4 +1,4 @@
-from logic.protogen.out.student_out_pb2 import ReadStudentListResponse, ReadStudentResponse
+from logic.protogen.outgoing.student_out_pb2 import ReadStudentListResponse, ReadStudentResponse
 
 
 class Student():
@@ -9,7 +9,7 @@ class Student():
         self.email = email
         
     @classmethod
-    def from_request(request) -> Student:
+    def from_request(request):
         return Student(
             first_name=request.first_name,
             last_name=request.last_name,
