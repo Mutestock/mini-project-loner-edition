@@ -85,6 +85,7 @@ Envoy is required because our frontend is communicating directly with a gRPC ser
 - SOAP service: 10040
 - Web Application: 80
 - Envoy Proxy: 10050
+- Soap to rest translater service: 10060
 
 # Diagrams
 Note that:
