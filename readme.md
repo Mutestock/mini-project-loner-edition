@@ -39,6 +39,9 @@ The solution is deployed at:
 - SOAP - http://159.65.54.148:10040/Service.svc
 
 # Techstack
+### Frontend
+- Angular
+
 ### Backend
 - C# - SOAP
 - Rust - gRPC
@@ -48,8 +51,8 @@ The solution is deployed at:
 ### Databases
 - PostgreSQL
 
-### Frontend
-- Angular
+### Proxy
+- Envoy Proxy
 
 ### DevOps
 - Github Actions, DigitalOcean
