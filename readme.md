@@ -27,14 +27,12 @@ The assignment definition can be seen in [mini-project-loner-edition/A3-MP-API.p
 Be advised that pulling the containers and compiling their contents will take some time.
 
 # Deployment 
-**NOTE: The deployment of the frontend currently has some issues displaying students (grpc) & teachers (soap). It's possible to to call the endpoints directly on their port with a tool like** [BloomRPC](https://github.com/uw-labs/bloomrpc) **&** [Wizdler](https://chrome.google.com/webstore/detail/wizdler/oebpmncolmhiapingjaagmapififiakb?hl=en)**.**
-
 The solution is deployed at:
-## Frontend:
-  http://159.65.54.148/
+### Frontend
+http://159.65.54.148/
 
-## Backend:
-- REST - http://159.65.54.148:10020/grade
+### Backend
+- REST - http://159.65.54.148:10020/grade ([see REST section](https://github.com/Mutestock/mini-project-loner-edition#REST) for list of available endpoints)
 - gRPC - http://159.65.54.148:10030 (.proto file are located at [mini-project-loner-edition/grpc/proto/student/student.proto](https://github.com/Mutestock/mini-project-loner-edition/tree/master/grpc/proto/student))
 - SOAP - http://159.65.54.148:10040/Service.svc
 
@@ -90,3 +88,28 @@ Note that:
 - SOAP is responsible for Teachers
 
 ![alt text](/resources/er_diagram.png "er_diagram")
+
+# REST
+```
+interface Grade {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+interface Person {
+  first_name: string;
+  last_name: string;
+  phone_number: string;
+  email: string;
+}
+```
+| Endpoint            | HTTP Method | Success Code | Response Value | Description                                                             |
+|---------------------|-------------|--------------|----------------|-------------------------------------------------------------------------|
+| /grade              | `GET`       | 200          | Grade[]        | Get a list of all grades.                                               |
+| /grade/<id>         | `GET`       | 200          | Grade          | Get a single grade based on id. <id> is an int.                         |
+| /grade              | `POST`      | 201          |                | Add a new grade.                                                        |
+| /grade/<id>         | `PUT`       | 204          |                | Update an existing grade.                                               |
+| /grade/<id>         | `DELETE`    | 200          |                | Removes a grade. <id> is an int.                                        |
+| /grade-student/<id> | `GET`       | 200          | Person[]       | Get a list of students related to grade, from grade id. <id> is an int. |
+| /grade-teacher/<id> | `GET`       | 200          | Person[]       | Get a list of teachers related to grade, from grade id. <id> is an int. |
