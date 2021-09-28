@@ -107,9 +107,9 @@ interface Person {
 | Endpoint            | HTTP Method | Success Code | Response Value | Description                                                             |
 |---------------------|-------------|--------------|----------------|-------------------------------------------------------------------------|
 | /grade              | `GET`       | 200          | Grade[]        | Get a list of all grades.                                               |
-| /grade/<id>         | `GET`       | 200          | Grade          | Get a single grade based on id. <id> is an int.                         |
+| /grade/\<id>         | `GET`       | 200          | Grade          | Get a single grade based on id. \<id> is an int.                         |
 | /grade              | `POST`      | 201          |                | Add a new grade.                                                        |
-| /grade/<id>         | `PUT`       | 204          |                | Update an existing grade.                                               |
-| /grade/<id>         | `DELETE`    | 200          |                | Removes a grade. <id> is an int.                                        |
-| /grade-student/<id> | `GET`       | 200          | Person[]       | Get a list of students related to grade, from grade id. <id> is an int. |
-| /grade-teacher/<id> | `GET`       | 200          | Person[]       | Get a list of teachers related to grade, from grade id. <id> is an int. |
+| /grade/\<id>         | `PUT`       | 204          |                | Update an existing grade.                                               |
+| /grade/\<id>         | `DELETE`    | 200          |                | Removes a grade. \<id> is an int.                                        |
+| /grade-student/\<id> | `GET`       | 200          | Person[]       | Get a list of students related to grade, from grade id. \<id> is an int. |
+| /grade-teacher/\<id> | `GET`       | 200          | Person[]       | Get a list of teachers related to grade, from grade id. \<id> is an int. |
